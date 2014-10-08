@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f22aaa951c048e3b3a224841cc30972" Name="Diagram1">
+        <EntityTypeShape EntityType="FMModel.Championship" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.City" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.Country" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.EntityManager" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.Journey" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.Match" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.MatchGoals" Width="1.5" PointX="6.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.Player" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.Season" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.Team" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.TeamPoints" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FMModel.UserProfile" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="FMModel.FK_Championship_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Championship_EntityManager" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Journey_Championship" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Table_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_TeamPoints_Championship" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_City_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Team_City" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Player_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Match_GuestTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Match_VisitorTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_Player_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_TeamPoints_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_User_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="FMModel.FK_MatchGoals_Match" />
+        <AssociationConnector Association="FMModel.FK_MatchGoals_Player" />
+        <AssociationConnector Association="FMModel.FK_MatchGoals_Team" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
