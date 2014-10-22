@@ -17,15 +17,15 @@ namespace FootballManager.Models
         public Country()
         {
             this.Championship = new HashSet<Championship>();
-            this.City = new HashSet<City>();
             this.Player = new HashSet<Player>();
+            this.Team = new HashSet<Team>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Championship> Championship { get; set; }
-        public virtual ICollection<City> City { get; set; }
         public virtual ICollection<Player> Player { get; set; }
+        public virtual ICollection<Team> Team { get; set; }
     }
 }

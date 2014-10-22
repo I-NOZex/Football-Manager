@@ -12,12 +12,12 @@ namespace FootballManager.Controllers
 {
     public class TeamsController : Controller
     {
-        private FMDBEntities1 db = new FMDBEntities1();
+        private FMDBEntities db = new FMDBEntities();
 
         // GET: Teams
         public ActionResult Index()
         {
-            var team = db.Team.Include(t => t.City);
+            var team = db.Team.Include(t => t.Country);
             return View(team.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace FootballManager.Controllers
         // GET: Teams/Create
         public ActionResult Create()
         {
-            ViewBag.CityID = new SelectList(db.City, "ID", "Name");
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "Name");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Logo,FundationDate,CityID")] Team team)
+        public ActionResult Create([Bind(Include = "ID,Name,Logo,FundationDate,CountryID,City")] Team team)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace FootballManager.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CityID = new SelectList(db.City, "ID", "Name", team.CityID);
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "Name", team.CountryID);
             return View(team);
         }
 
@@ -73,7 +73,7 @@ namespace FootballManager.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CityID = new SelectList(db.City, "ID", "Name", team.CityID);
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "Name", team.CountryID);
             return View(team);
         }
 
@@ -82,7 +82,7 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Logo,FundationDate,CityID")] Team team)
+        public ActionResult Edit([Bind(Include = "ID,Name,Logo,FundationDate,CountryID,City")] Team team)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace FootballManager.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CityID = new SelectList(db.City, "ID", "Name", team.CityID);
+            ViewBag.CountryID = new SelectList(db.Country, "ID", "Name", team.CountryID);
             return View(team);
         }
 

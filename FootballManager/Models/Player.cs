@@ -26,7 +26,7 @@ namespace FootballManager.Models
         public int TeamID { get; set; }
     
         public virtual Country Country { get; set; }
-        public virtual Team Team { get; set; }
         public virtual ICollection<MatchGoals> MatchGoals { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

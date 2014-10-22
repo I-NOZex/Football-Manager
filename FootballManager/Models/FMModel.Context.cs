@@ -13,10 +13,10 @@ namespace FootballManager.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FMDBEntities1 : DbContext
+    public partial class FMDBEntities : DbContext
     {
-        public FMDBEntities1()
-            : base("name=FMDBEntities1")
+        public FMDBEntities()
+            : base("name=FMDBEntities")
         {
         }
     
@@ -26,7 +26,6 @@ namespace FootballManager.Models
         }
     
         public virtual DbSet<Championship> Championship { get; set; }
-        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<EntityManager> EntityManager { get; set; }
         public virtual DbSet<Journey> Journey { get; set; }
@@ -36,7 +35,5 @@ namespace FootballManager.Models
         public virtual DbSet<Season> Season { get; set; }
         public virtual DbSet<Team> Team { get; set; }
         public virtual DbSet<TeamPoints> TeamPoints { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<UserProfile> UserProfile { get; set; }
     }
 }

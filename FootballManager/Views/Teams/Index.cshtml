@@ -21,7 +21,10 @@
             @Html.DisplayNameFor(model => model.FundationDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City.Name)
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country.Name)
         </th>
         <th></th>
     </tr>
@@ -38,7 +41,10 @@
             @Html.DisplayFor(modelItem => item.FundationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.City.Name)
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

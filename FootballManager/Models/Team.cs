@@ -18,22 +18,23 @@ namespace FootballManager.Models
         {
             this.Match = new HashSet<Match>();
             this.Match1 = new HashSet<Match>();
+            this.MatchGoals = new HashSet<MatchGoals>();
             this.Player = new HashSet<Player>();
             this.TeamPoints = new HashSet<TeamPoints>();
-            this.MatchGoals = new HashSet<MatchGoals>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
         public string Logo { get; set; }
         public System.DateTime FundationDate { get; set; }
-        public int CityID { get; set; }
+        public int CountryID { get; set; }
+        public string City { get; set; }
     
-        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
         public virtual ICollection<Match> Match { get; set; }
         public virtual ICollection<Match> Match1 { get; set; }
+        public virtual ICollection<MatchGoals> MatchGoals { get; set; }
         public virtual ICollection<Player> Player { get; set; }
         public virtual ICollection<TeamPoints> TeamPoints { get; set; }
-        public virtual ICollection<MatchGoals> MatchGoals { get; set; }
     }
 }

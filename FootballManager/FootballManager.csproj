@@ -171,9 +171,6 @@
     <Compile Include="Models\Championship.cs">
       <DependentUpon>FMModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\City.cs">
-      <DependentUpon>FMModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Country.cs">
       <DependentUpon>FMModel.tt</DependentUpon>
     </Compile>
@@ -216,12 +213,6 @@
       <DependentUpon>FMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TeamPoints.cs">
-      <DependentUpon>FMModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>FMModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserProfile.cs">
       <DependentUpon>FMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
