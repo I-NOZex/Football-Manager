@@ -1,0 +1,42 @@
+﻿@model FootballManager.Models.Season
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Season</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfTeams)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfTeams)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Championship.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Championship.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
