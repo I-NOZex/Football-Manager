@@ -21,10 +21,10 @@ namespace FootballManager.Models
         }
     
         public int ID { get; set; }
-
         [Required]
         [StringLength(150, ErrorMessage = "The Name cannot have more than 50 characters")]
         public string Name { get; set; }
+        public int UserID { get; set; }
     
         public virtual ICollection<Championship> Championship { get; set; }
     }

@@ -11,13 +11,24 @@ namespace FootballManager.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class MatchGoals
     {
         public int ID { get; set; }
+
+        [Required]
         public int MatchID { get; set; }
+
+        [Required]
         public int TeamID { get; set; }
+
+        [Required]
         public int PlayerID { get; set; }
+
+        [Required]
+        [DataType(DataType.Time, ErrorMessage = "Please enter a valid date")]
+        [DisplayFormat(DataFormatString = "{0:mm\\:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime Time { get; set; }
     
         public virtual Match Match { get; set; }
