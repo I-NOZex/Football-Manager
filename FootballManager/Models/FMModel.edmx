@@ -28,7 +28,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Journey">
           <Key>
@@ -370,8 +371,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Championship" Relationship="Self.FK_Championship_Country" FromRole="EntityManager" ToRole="Championship" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Journey">
           <Key>
@@ -726,6 +728,7 @@
           <EntitySetMapping Name="EntityManager">
             <EntityTypeMapping TypeName="FMDBModel.EntityManager">
               <MappingFragment StoreEntitySet="EntityManager">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>

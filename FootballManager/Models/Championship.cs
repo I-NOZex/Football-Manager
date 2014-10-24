@@ -11,6 +11,7 @@ namespace FootballManager.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Championship
     {
@@ -22,10 +23,23 @@ namespace FootballManager.Models
         }
     
         public int ID { get; set; }
+
+        [Required]
+        [StringLength(150,ErrorMessage="Championship name cannot have more than 150 characters")]
         public string Name { get; set; }
+
+        [Required]
+        [RegularExpression("([a-zA-Z]:(\\w+)*\\[a-zA-Z0_9]+)?.(jpe?g|png|gif)$")]
         public string Logo { get; set; }
-        public System.DateTime FoudationDate { get; set; }
+
+        [DataType(DataType.Date,ErrorMessage="Please enter a valid date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime FoudationDate { get; set; }
+
+        [Required]
         public int CountryID { get; set; }
+
+        [Required]
         public int EntityMngID { get; set; }
     
         public virtual EntityManager EntityManager { get; set; }
