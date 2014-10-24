@@ -14,14 +14,14 @@ namespace FootballManager.Controllers
     {
         private FMDBEntities db = new FMDBEntities();
 
-        // GET: /Championship/
+        // GET: Championships
         public ActionResult Index()
         {
             var championship = db.Championship.Include(c => c.EntityManager).Include(c => c.Country);
             return View(championship.ToList());
         }
 
-        // GET: /Championship/Details/5
+        // GET: Championships/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace FootballManager.Controllers
             return View(championship);
         }
 
-        // GET: /Championship/Create
+        // GET: Championships/Create
         public ActionResult Create()
         {
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name");
@@ -44,12 +44,12 @@ namespace FootballManager.Controllers
             return View();
         }
 
-        // POST: /Championship/Create
+        // POST: Championships/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
+        public ActionResult Create([Bind(Include = "ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace FootballManager.Controllers
             return View(championship);
         }
 
-        // GET: /Championship/Edit/5
+        // GET: Championships/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,12 +80,12 @@ namespace FootballManager.Controllers
             return View(championship);
         }
 
-        // POST: /Championship/Edit/5
+        // POST: Championships/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
+        public ActionResult Edit([Bind(Include = "ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace FootballManager.Controllers
             return View(championship);
         }
 
-        // GET: /Championship/Delete/5
+        // GET: Championships/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace FootballManager.Controllers
             return View(championship);
         }
 
-        // POST: /Championship/Delete/5
+        // POST: Championships/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
