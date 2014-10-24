@@ -11,12 +11,21 @@ namespace FootballManager.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Journey
     {
         public int ID { get; set; }
+
+        [Required]
         public int ChampshipID { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime DateBegin { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime DateEnd { get; set; }
     
         public virtual Championship Championship { get; set; }
