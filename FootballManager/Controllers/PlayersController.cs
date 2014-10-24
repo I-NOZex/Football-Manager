@@ -14,14 +14,14 @@ namespace FootballManager.Controllers
     {
         private FMDBEntities db = new FMDBEntities();
 
-        // GET: /Players/
+        // GET: Players
         public ActionResult Index()
         {
             var player = db.Player.Include(p => p.Country).Include(p => p.Team);
             return View(player.ToList());
         }
 
-        // GET: /Players/Details/5
+        // GET: Players/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace FootballManager.Controllers
             return View(player);
         }
 
-        // GET: /Players/Create
+        // GET: Players/Create
         public ActionResult Create()
         {
             ViewBag.CountryID = new SelectList(db.Country, "ID", "Name");
@@ -44,12 +44,12 @@ namespace FootballManager.Controllers
             return View();
         }
 
-        // POST: /Players/Create
+        // POST: Players/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Name,Birth,CountryID,TeamID")] Player player)
+        public ActionResult Create([Bind(Include = "ID,Name,Birth,CountryID,TeamID")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace FootballManager.Controllers
             return View(player);
         }
 
-        // GET: /Players/Edit/5
+        // GET: Players/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,12 +80,12 @@ namespace FootballManager.Controllers
             return View(player);
         }
 
-        // POST: /Players/Edit/5
+        // POST: Players/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,Name,Birth,CountryID,TeamID")] Player player)
+        public ActionResult Edit([Bind(Include = "ID,Name,Birth,CountryID,TeamID")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace FootballManager.Controllers
             return View(player);
         }
 
-        // GET: /Players/Delete/5
+        // GET: Players/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace FootballManager.Controllers
             return View(player);
         }
 
-        // POST: /Players/Delete/5
+        // POST: Players/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -14,14 +14,14 @@ namespace FootballManager.Controllers
     {
         private FMDBEntities db = new FMDBEntities();
 
-        // GET: /Matches/
+        // GET: Matches
         public ActionResult Index()
         {
             var match = db.Match.Include(m => m.Team).Include(m => m.Team1);
             return View(match.ToList());
         }
 
-        // GET: /Matches/Details/5
+        // GET: Matches/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace FootballManager.Controllers
             return View(match);
         }
 
-        // GET: /Matches/Create
+        // GET: Matches/Create
         public ActionResult Create()
         {
             ViewBag.GuestTeamID = new SelectList(db.Team, "ID", "Name");
@@ -44,12 +44,12 @@ namespace FootballManager.Controllers
             return View();
         }
 
-        // POST: /Matches/Create
+        // POST: Matches/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,JourneyID,Date,KickoffTime,VisitorTeamID,GuestTeamID")] Match match)
+        public ActionResult Create([Bind(Include = "ID,JourneyID,Date,KickoffTime,VisitorTeamID,GuestTeamID")] Match match)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace FootballManager.Controllers
             return View(match);
         }
 
-        // GET: /Matches/Edit/5
+        // GET: Matches/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,12 +80,12 @@ namespace FootballManager.Controllers
             return View(match);
         }
 
-        // POST: /Matches/Edit/5
+        // POST: Matches/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,JourneyID,Date,KickoffTime,VisitorTeamID,GuestTeamID")] Match match)
+        public ActionResult Edit([Bind(Include = "ID,JourneyID,Date,KickoffTime,VisitorTeamID,GuestTeamID")] Match match)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace FootballManager.Controllers
             return View(match);
         }
 
-        // GET: /Matches/Delete/5
+        // GET: Matches/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace FootballManager.Controllers
             return View(match);
         }
 
-        // POST: /Matches/Delete/5
+        // POST: Matches/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -132,5 +132,8 @@ namespace FootballManager.Controllers
             }
             base.Dispose(disposing);
         }
+
+        /********** Custom methods **************/
+
     }
 }

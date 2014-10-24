@@ -14,29 +14,29 @@ namespace FootballManager.Controllers
     {
         private FMDBEntities db = new FMDBEntities();
 
-        // GET: /TeamPoints/
+        // GET: TeamPoints
         public ActionResult Index()
         {
-            var teampoints = db.TeamPoints.Include(t => t.Championship).Include(t => t.Team);
-            return View(teampoints.ToList());
+            var teamPoints = db.TeamPoints.Include(t => t.Championship).Include(t => t.Team);
+            return View(teamPoints.ToList());
         }
 
-        // GET: /TeamPoints/Details/5
+        // GET: TeamPoints/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TeamPoints teampoints = db.TeamPoints.Find(id);
-            if (teampoints == null)
+            TeamPoints teamPoints = db.TeamPoints.Find(id);
+            if (teamPoints == null)
             {
                 return HttpNotFound();
             }
-            return View(teampoints);
+            return View(teamPoints);
         }
 
-        // GET: /TeamPoints/Create
+        // GET: TeamPoints/Create
         public ActionResult Create()
         {
             ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name");
@@ -44,82 +44,82 @@ namespace FootballManager.Controllers
             return View();
         }
 
-        // POST: /TeamPoints/Create
+        // POST: TeamPoints/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TeamID,ChampshipID,Points")] TeamPoints teampoints)
+        public ActionResult Create([Bind(Include = "TeamID,ChampshipID,Points")] TeamPoints teamPoints)
         {
             if (ModelState.IsValid)
             {
-                db.TeamPoints.Add(teampoints);
+                db.TeamPoints.Add(teamPoints);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", teampoints.ChampshipID);
-            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", teampoints.TeamID);
-            return View(teampoints);
+            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", teamPoints.ChampshipID);
+            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", teamPoints.TeamID);
+            return View(teamPoints);
         }
 
-        // GET: /TeamPoints/Edit/5
+        // GET: TeamPoints/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TeamPoints teampoints = db.TeamPoints.Find(id);
-            if (teampoints == null)
+            TeamPoints teamPoints = db.TeamPoints.Find(id);
+            if (teamPoints == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", teampoints.ChampshipID);
-            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", teampoints.TeamID);
-            return View(teampoints);
+            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", teamPoints.ChampshipID);
+            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", teamPoints.TeamID);
+            return View(teamPoints);
         }
 
-        // POST: /TeamPoints/Edit/5
+        // POST: TeamPoints/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TeamID,ChampshipID,Points")] TeamPoints teampoints)
+        public ActionResult Edit([Bind(Include = "TeamID,ChampshipID,Points")] TeamPoints teamPoints)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(teampoints).State = EntityState.Modified;
+                db.Entry(teamPoints).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", teampoints.ChampshipID);
-            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", teampoints.TeamID);
-            return View(teampoints);
+            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", teamPoints.ChampshipID);
+            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", teamPoints.TeamID);
+            return View(teamPoints);
         }
 
-        // GET: /TeamPoints/Delete/5
+        // GET: TeamPoints/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TeamPoints teampoints = db.TeamPoints.Find(id);
-            if (teampoints == null)
+            TeamPoints teamPoints = db.TeamPoints.Find(id);
+            if (teamPoints == null)
             {
                 return HttpNotFound();
             }
-            return View(teampoints);
+            return View(teamPoints);
         }
 
-        // POST: /TeamPoints/Delete/5
+        // POST: TeamPoints/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TeamPoints teampoints = db.TeamPoints.Find(id);
-            db.TeamPoints.Remove(teampoints);
+            TeamPoints teamPoints = db.TeamPoints.Find(id);
+            db.TeamPoints.Remove(teamPoints);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

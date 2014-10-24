@@ -14,29 +14,29 @@ namespace FootballManager.Controllers
     {
         private FMDBEntities db = new FMDBEntities();
 
-        // GET: /MatchGoals/
+        // GET: MatchGoals
         public ActionResult Index()
         {
-            var matchgoals = db.MatchGoals.Include(m => m.Match).Include(m => m.Player).Include(m => m.Team);
-            return View(matchgoals.ToList());
+            var matchGoals = db.MatchGoals.Include(m => m.Match).Include(m => m.Player).Include(m => m.Team);
+            return View(matchGoals.ToList());
         }
 
-        // GET: /MatchGoals/Details/5
+        // GET: MatchGoals/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MatchGoals matchgoals = db.MatchGoals.Find(id);
-            if (matchgoals == null)
+            MatchGoals matchGoals = db.MatchGoals.Find(id);
+            if (matchGoals == null)
             {
                 return HttpNotFound();
             }
-            return View(matchgoals);
+            return View(matchGoals);
         }
 
-        // GET: /MatchGoals/Create
+        // GET: MatchGoals/Create
         public ActionResult Create()
         {
             ViewBag.MatchID = new SelectList(db.Match, "ID", "ID");
@@ -45,85 +45,85 @@ namespace FootballManager.Controllers
             return View();
         }
 
-        // POST: /MatchGoals/Create
+        // POST: MatchGoals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,MatchID,TeamID,PlayerID,Time")] MatchGoals matchgoals)
+        public ActionResult Create([Bind(Include = "ID,MatchID,TeamID,PlayerID,Time")] MatchGoals matchGoals)
         {
             if (ModelState.IsValid)
             {
-                db.MatchGoals.Add(matchgoals);
+                db.MatchGoals.Add(matchGoals);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchgoals.MatchID);
-            ViewBag.PlayerID = new SelectList(db.Player, "ID", "Name", matchgoals.PlayerID);
-            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", matchgoals.TeamID);
-            return View(matchgoals);
+            ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchGoals.MatchID);
+            ViewBag.PlayerID = new SelectList(db.Player, "ID", "Name", matchGoals.PlayerID);
+            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", matchGoals.TeamID);
+            return View(matchGoals);
         }
 
-        // GET: /MatchGoals/Edit/5
+        // GET: MatchGoals/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MatchGoals matchgoals = db.MatchGoals.Find(id);
-            if (matchgoals == null)
+            MatchGoals matchGoals = db.MatchGoals.Find(id);
+            if (matchGoals == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchgoals.MatchID);
-            ViewBag.PlayerID = new SelectList(db.Player, "ID", "Name", matchgoals.PlayerID);
-            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", matchgoals.TeamID);
-            return View(matchgoals);
+            ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchGoals.MatchID);
+            ViewBag.PlayerID = new SelectList(db.Player, "ID", "Name", matchGoals.PlayerID);
+            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", matchGoals.TeamID);
+            return View(matchGoals);
         }
 
-        // POST: /MatchGoals/Edit/5
+        // POST: MatchGoals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,MatchID,TeamID,PlayerID,Time")] MatchGoals matchgoals)
+        public ActionResult Edit([Bind(Include = "ID,MatchID,TeamID,PlayerID,Time")] MatchGoals matchGoals)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(matchgoals).State = EntityState.Modified;
+                db.Entry(matchGoals).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchgoals.MatchID);
-            ViewBag.PlayerID = new SelectList(db.Player, "ID", "Name", matchgoals.PlayerID);
-            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", matchgoals.TeamID);
-            return View(matchgoals);
+            ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchGoals.MatchID);
+            ViewBag.PlayerID = new SelectList(db.Player, "ID", "Name", matchGoals.PlayerID);
+            ViewBag.TeamID = new SelectList(db.Team, "ID", "Name", matchGoals.TeamID);
+            return View(matchGoals);
         }
 
-        // GET: /MatchGoals/Delete/5
+        // GET: MatchGoals/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MatchGoals matchgoals = db.MatchGoals.Find(id);
-            if (matchgoals == null)
+            MatchGoals matchGoals = db.MatchGoals.Find(id);
+            if (matchGoals == null)
             {
                 return HttpNotFound();
             }
-            return View(matchgoals);
+            return View(matchGoals);
         }
 
-        // POST: /MatchGoals/Delete/5
+        // POST: MatchGoals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MatchGoals matchgoals = db.MatchGoals.Find(id);
-            db.MatchGoals.Remove(matchgoals);
+            MatchGoals matchGoals = db.MatchGoals.Find(id);
+            db.MatchGoals.Remove(matchGoals);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
