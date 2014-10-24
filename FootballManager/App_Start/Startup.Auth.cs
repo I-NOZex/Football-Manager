@@ -47,16 +47,16 @@ namespace FootballManager
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //    clientId: "0000000040132406",
+            //    clientSecret: "VUlhjTjEG8M2Vej9hut7XbcNBsm8lcjN");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1553993371481393",
+               appSecret: "c9391756389f746277655b9cec667e5d");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
