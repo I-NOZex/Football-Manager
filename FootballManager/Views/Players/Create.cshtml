@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Birth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Birth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Birth, new { htmlAttributes = new { @class = "form-control date-picker" } })
                 @Html.ValidationMessageFor(model => model.Birth, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +58,22 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+    <!-- jQuery UI CSS Reference -->
+    <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
+    <!-- Required jQuery and jQuery UI Javascript references -->
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.4.min.js")"></script>
+
+        <!-- Code to wire up your DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $('.date-picker').datepicker();
+        })
+    </script>
 
 @section Scripts {
+    @Scripts.Render("~/Scripts/custom-functions.js")
+    @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
     @Scripts.Render("~/bundles/jqueryval")
 }

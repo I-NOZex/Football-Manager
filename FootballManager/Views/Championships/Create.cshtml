@@ -34,11 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FoudationDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-<<<<<<< HEAD
-                @Html.EditorFor(model => model.FoudationDate, new { htmlAttributes = new { @class = "form-control" } })
-=======
                 @Html.EditorFor(model => model.FoudationDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
->>>>>>> origin/master
                 @Html.ValidationMessageFor(model => model.FoudationDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -72,10 +68,7 @@
 </div>
 
 @section Scripts {
-<<<<<<< HEAD
-=======
     @Scripts.Render("~/Scripts/custom-functions.js")
     @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
->>>>>>> origin/master
     @Scripts.Render("~/bundles/jqueryval")
 }
