@@ -27,8 +27,9 @@ namespace FootballManager.Models
         public int PlayerID { get; set; }
 
         [Required]
-        [DataType(DataType.Time, ErrorMessage = "Please enter a valid date")]
-        [DisplayFormat(DataFormatString = "{0:mm\\:ss}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Time, ErrorMessage = "Please enter a valid date")]
+        //[DisplayFormat(DataFormatString = "{0:mm\\:ss}", ApplyFormatInEditMode = true)]
+        [RegularExpression("^(00:[0-5][1-9])|(([1-119]){1,3}:([0-5][0-9]))|(120:00)$", ErrorMessage = "Please enter a valid time, between 00:01 and 120:00")]
         public System.DateTime Time { get; set; }
     
         public virtual Match Match { get; set; }
