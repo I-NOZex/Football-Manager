@@ -54,6 +54,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                matchGoals.Time = DateTime.Parse(matchGoals.Time.ToString());
                 db.MatchGoals.Add(matchGoals);
                 db.SaveChanges();
                 return RedirectToAction("Index");
