@@ -371,16 +371,16 @@
     <Content Include="Views\MatchGoals\Details.cshtml" />
     <Content Include="Views\MatchGoals\Edit.cshtml" />
     <Content Include="Views\MatchGoals\Index.cshtml" />
-    <Content Include="Views\EntityManagers\Create.cshtml" />
-    <Content Include="Views\EntityManagers\Delete.cshtml" />
-    <Content Include="Views\EntityManagers\Details.cshtml" />
-    <Content Include="Views\EntityManagers\Edit.cshtml" />
-    <Content Include="Views\EntityManagers\Index.cshtml" />
     <Content Include="Views\TeamPoints\Create.cshtml" />
     <Content Include="Views\TeamPoints\Delete.cshtml" />
     <Content Include="Views\TeamPoints\Details.cshtml" />
     <Content Include="Views\TeamPoints\Edit.cshtml" />
     <Content Include="Views\TeamPoints\Index.cshtml" />
+    <Content Include="Views\EntityManagers\Create.cshtml" />
+    <Content Include="Views\EntityManagers\Delete.cshtml" />
+    <Content Include="Views\EntityManagers\Details.cshtml" />
+    <Content Include="Views\EntityManagers\Edit.cshtml" />
+    <Content Include="Views\EntityManagers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

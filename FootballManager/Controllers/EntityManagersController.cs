@@ -1,23 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FootballManager.Models;
 
 namespace FootballManager.Controllers
 {
     public class EntityManagersController : Controller
     {
+        private FMDBEntities db = new FMDBEntities();
+
         // GET: EntityManagers
         public ActionResult Index()
         {
-            return View();
+            return View(db.EntityManager.ToList());
         }
 
         // GET: EntityManagers/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EntityManager entityManager = db.EntityManager.Find(id);
+            if (entityManager == null)
+            {
+                return HttpNotFound();
+            }
+            return View(entityManager);
         }
 
         // GET: EntityManagers/Create
@@ -27,63 +42,86 @@ namespace FootballManager.Controllers
         }
 
         // POST: EntityManagers/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Name,UserID")] EntityManager entityManager)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                db.EntityManager.Add(entityManager);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(entityManager);
         }
 
         // GET: EntityManagers/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EntityManager entityManager = db.EntityManager.Find(id);
+            if (entityManager == null)
+            {
+                return HttpNotFound();
+            }
+            return View(entityManager);
         }
 
         // POST: EntityManagers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Name,UserID")] EntityManager entityManager)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(entityManager).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(entityManager);
         }
 
         // GET: EntityManagers/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EntityManager entityManager = db.EntityManager.Find(id);
+            if (entityManager == null)
+            {
+                return HttpNotFound();
+            }
+            return View(entityManager);
         }
 
         // POST: EntityManagers/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            EntityManager entityManager = db.EntityManager.Find(id);
+            db.EntityManager.Remove(entityManager);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }
