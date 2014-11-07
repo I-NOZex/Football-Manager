@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FootballManager.Models;
+using System.IO;
 
 namespace FootballManager.Controllers
 {
@@ -51,6 +52,14 @@ namespace FootballManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {
+
+            if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {
+                var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), championship.ID.ToString());
+                var imageUrl = Path.Combine(Utils.UPLOAD, championship.ID.ToString());
+                championship.LogoPath.SaveAs(imagePath);
+                championship.Logo = String.Concat(Utils.UPLOAD, "/", championship.ID.ToString());
+            }
+
             if (ModelState.IsValid)
             {
                 db.Championship.Add(championship);

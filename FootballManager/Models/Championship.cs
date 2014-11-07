@@ -9,9 +9,12 @@
 
 namespace FootballManager.Models
 {
+    using Imagens.Models.Validators;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
     
     public partial class Championship
     {
@@ -29,7 +32,12 @@ namespace FootballManager.Models
         public string Name { get; set; }
 
         [Required]
-        [RegularExpression("([a-zA-Z]:(\\w+)*\\[a-zA-Z0_9]+)?.(jpe?g|png|gif)$")]
+        [NotMapped]
+        [DataType(DataType.Upload)]
+        //[FileSize(10240)]
+        [FileTypes("jpg,jpeg,png,gif")]
+        public HttpPostedFileBase LogoPath { get; set; }
+
         public string Logo { get; set; }
 
         [DataType(DataType.Date,ErrorMessage="Please enter a valid date")]
