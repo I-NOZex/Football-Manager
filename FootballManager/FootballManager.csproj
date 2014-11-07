@@ -180,7 +180,9 @@
     <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\MatchGoalsController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\TeamPointsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="DAL\FMInitializer.cs" />
@@ -378,6 +380,9 @@
     <Content Include="Views\TeamPoints\Details.cshtml" />
     <Content Include="Views\TeamPoints\Edit.cshtml" />
     <Content Include="Views\TeamPoints\Index.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Roles\ManageUserRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
