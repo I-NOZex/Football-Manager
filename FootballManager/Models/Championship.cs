@@ -31,7 +31,7 @@ namespace FootballManager.Models
         [StringLength(150,ErrorMessage="Championship name cannot have more than 150 characters")]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         [NotMapped]
         [DataType(DataType.Upload)]
         //[FileSize(10240)]

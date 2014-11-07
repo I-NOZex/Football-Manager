@@ -53,10 +53,13 @@ namespace FootballManager.Controllers
         public ActionResult Create([Bind(Include = "ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {
 
-            if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {
+            if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {           
                 var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), championship.ID.ToString());
                 var imageUrl = Path.Combine(Utils.UPLOAD, championship.ID.ToString());
                 championship.LogoPath.SaveAs(imagePath);
+
+                System.Diagnostics.Trace.WriteLine(imagePath);
+
                 championship.Logo = String.Concat(Utils.UPLOAD, "/", championship.ID.ToString());
             }
 
