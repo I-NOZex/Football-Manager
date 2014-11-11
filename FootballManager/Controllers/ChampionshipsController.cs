@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FootballManager.Models;
 using System.IO;
+using System.Data.Entity.Validation;
 
 namespace FootballManager.Controllers
 {
@@ -61,13 +62,26 @@ namespace FootballManager.Controllers
                 System.Diagnostics.Trace.WriteLine(imagePath);
 
                 championship.Logo = String.Concat(Utils.UPLOAD, "/", championship.ID.ToString());
+                System.Diagnostics.Trace.TraceInformation(championship.Logo);
             }
 
             if (ModelState.IsValid)
             {
+                try { 
                 db.Championship.Add(championship);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
+
+                } catch (DbEntityValidationException dbEx) {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Diagnostics.Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
             }
 
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name", championship.EntityMngID);

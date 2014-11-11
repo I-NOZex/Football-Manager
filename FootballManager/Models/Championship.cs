@@ -35,7 +35,7 @@ namespace FootballManager.Models
         [NotMapped]
         [DataType(DataType.Upload)]
         //[FileSize(10240)]
-        [FileTypes("jpg,jpeg,png,gif")]
+        //[FileTypes("jpg,jpeg,png,gif")]
         public HttpPostedFileBase LogoPath { get; set; }
 
         public string Logo { get; set; }
