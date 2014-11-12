@@ -31,14 +31,14 @@ namespace FootballManager.Models
         [StringLength(150,ErrorMessage="Championship name cannot have more than 150 characters")]
         public string Name { get; set; }
 
+        public string Logo { get; set; }        
+
         //[Required]
         [NotMapped]
         [DataType(DataType.Upload)]
         //[FileSize(10240)]
         //[FileTypes("jpg,jpeg,png,gif")]
         public HttpPostedFileBase LogoPath { get; set; }
-
-        public string Logo { get; set; }
 
         [DataType(DataType.Date,ErrorMessage="Please enter a valid date")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

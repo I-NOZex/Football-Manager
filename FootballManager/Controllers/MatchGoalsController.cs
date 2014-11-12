@@ -52,27 +52,27 @@ namespace FootballManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,MatchID,TeamID,PlayerID,Time")] MatchGoals matchGoals)
         {
+            //atribui o tempo a que o golo foi marcado e converte para string
+            string time = matchGoals.Time.ToString();
+            //divide o tempo numa array em que o primeiro valor corresponde a MM(M) e o segundo a SS
+            //converte os valores para int
+            int[] timeArr = Array.ConvertAll(time.Split(':'), int.Parse);
+
+            //converte MM(M) para H:MM
+            int totalMinutes = timeArr[0];
+            int hours = totalMinutes / 60;
+            int min = totalMinutes % 60;
+            int sec = timeArr[1];
+
+            //obtem a data atual
+            DateTime currDate = DateTime.Now;
+            //cria uma nova variavel de data, definindo a data para a atual, e a hora para as referentes ao golo
+            DateTime date = new DateTime(currDate.Year, currDate.Month, currDate.Day, hours, min, sec);
+            //atribui o tempo a que o golo foi marcado convertido de MM(M):SS para HH:MM:SS
+            matchGoals.Time = date;
+
             if (ModelState.IsValid)
             {
-                //atribui o tempo a que o golo foi marcado e converte para string
-                string time = matchGoals.Time.ToString();
-                //divide o tempo numa array em que o primeiro valor corresponde a MM(M) e o segundo a SS
-                //converte os valores para int
-                int[] timeArr = Array.ConvertAll(time.Split(':'), int.Parse);
-
-                //converte MM(M) para H:MM
-                int totalMinutes = timeArr[0];
-                int hours = totalMinutes / 60;
-                int min = totalMinutes % 60;
-                int sec = timeArr[1];
-
-                //obtem a data atual
-                DateTime currDate = DateTime.Now;
-                //cria uma nova variavel de data, definindo a data para a atual, e a hora para as referentes ao golo
-                DateTime date = new DateTime(currDate.Year, currDate.Month, currDate.Day, hours, min, sec);
-                //atribui o tempo a que o golo foi marcado convertido de MM(M):SS para HH:MM:SS
-                matchGoals.Time = date;
-
                 db.MatchGoals.Add(matchGoals);
                 db.SaveChanges();
                 return RedirectToAction("Index");

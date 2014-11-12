@@ -35,6 +35,9 @@ namespace FootballManager.Controllers
             {
                 return HttpNotFound();
             }
+            if (championship.Logo != null) {
+                ViewBag.Logo =  Utils.EncodeFile(Server.MapPath(championship.Logo.ToString()));
+            }
             return View(championship);
         }
 
@@ -51,34 +54,33 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
-        {
-
-            if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {           
-                var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), championship.ID.ToString());
-                var imageUrl = Path.Combine(Utils.UPLOAD, championship.ID.ToString());
+        public ActionResult Create([Bind(Include = "ID,Name,LogoPath,FoudationDate,CountryID,EntityMngID")] Championship championship)
+        {           
+            if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {
+                string filename = DateTime.Now.Ticks + Path.GetExtension(championship.LogoPath.FileName);
+                
+                var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), filename);
+                var imageUrl = Path.Combine(Utils.UPLOAD, filename);
                 championship.LogoPath.SaveAs(imagePath);
 
-                System.Diagnostics.Trace.WriteLine(imagePath);
+                championship.Logo = String.Concat(Utils.UPLOAD, "/", filename);
 
-                championship.Logo = String.Concat(Utils.UPLOAD, "/", championship.ID.ToString());
-                System.Diagnostics.Trace.TraceInformation(championship.Logo);
             }
 
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 try { 
                 db.Championship.Add(championship);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = championship.ID });
 
 
                 } catch (DbEntityValidationException dbEx) {
                     foreach (var validationErrors in dbEx.EntityValidationErrors)
                     {
                         foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            System.Diagnostics.Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        {                            
+                            System.Diagnostics.Trace.TraceInformation("\n\rProperty: {0}\n\r Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                            return RedirectToAction("Create");
                         }
                     }
                 }
@@ -111,8 +113,39 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Logo,FoudationDate,CountryID,EntityMngID")] Championship championship)
+        public ActionResult Edit([Bind(Include = "ID,Name,LogoPath,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {
+            if (championship.LogoPath != null && 
+            championship.LogoPath.ContentLength > 0 &&
+            championship.LogoPath.FileName != Path.GetFileName(championship.Logo) ) {
+
+                string filename = DateTime.Now.Ticks + Path.GetExtension(championship.LogoPath.FileName);
+
+                var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), filename);
+                var imageUrl = Path.Combine(Utils.UPLOAD, filename);
+                championship.LogoPath.SaveAs(imagePath);
+
+                championship.Logo = String.Concat(Utils.UPLOAD, "/", filename);
+
+            }
+
+            if (ModelState.IsValid) {
+                try {
+                    db.Entry(championship).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { id = championship.ID });
+
+
+                } catch (DbEntityValidationException dbEx) {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors) {
+                        foreach (var validationError in validationErrors.ValidationErrors) {
+                            System.Diagnostics.Trace.TraceInformation("\n\rProperty: {0}\n\r Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                            return RedirectToAction("Edit", new { id = championship.ID });
+                        }
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(championship).State = EntityState.Modified;
