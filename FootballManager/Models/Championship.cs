@@ -9,8 +9,12 @@
 
 namespace FootballManager.Models
 {
+    using Imagens.Models.Validators;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
     
     public partial class Championship
     {
@@ -22,10 +26,28 @@ namespace FootballManager.Models
         }
     
         public int ID { get; set; }
+
+        [Required]
+        [StringLength(150,ErrorMessage="Championship name cannot have more than 150 characters")]
         public string Name { get; set; }
-        public string Logo { get; set; }
-        public System.DateTime FoudationDate { get; set; }
+
+        public string Logo { get; set; }        
+
+        //[Required]
+        [NotMapped]
+        [DataType(DataType.Upload)]
+        //[FileSize(10240)]
+        //[FileTypes("jpg,jpeg,png,gif")]
+        public HttpPostedFileBase LogoPath { get; set; }
+
+        [DataType(DataType.Date,ErrorMessage="Please enter a valid date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime FoudationDate { get; set; }
+
+        [Required]
         public int CountryID { get; set; }
+
+        [Required]
         public int EntityMngID { get; set; }
     
         public virtual EntityManager EntityManager { get; set; }
