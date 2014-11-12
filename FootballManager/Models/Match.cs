@@ -11,7 +11,6 @@ namespace FootballManager.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Match
     {
@@ -21,22 +20,10 @@ namespace FootballManager.Models
         }
     
         public int ID { get; set; }
-
-        [Required]
         public int JourneyID { get; set; }
-
-        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime Date { get; set; }
-
-        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date")]
-        [DisplayFormat(DataFormatString = "{0:hh\\:mm\\:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime KickoffTime { get; set; }
-
-        [Required]
         public int VisitorTeamID { get; set; }
-
-        [Required]
         public int GuestTeamID { get; set; }
     
         public virtual Team Team { get; set; }

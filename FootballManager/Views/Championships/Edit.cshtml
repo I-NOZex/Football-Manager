@@ -7,8 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm("Create", "Championships", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -28,7 +27,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control" } })
+                @if (ViewBag.Logo != null) {
+                    <img src="@ViewBag.Logo" class="img-circle" alt="@Model.Name" />
+                }
+                @Html.TextBoxFor(m => m.LogoPath, new { type = "file" })
                 @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FoudationDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FoudationDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FoudationDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.FoudationDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,5 +72,7 @@
 </div>
 
 @section Scripts {
+    @Scripts.Render("~/Scripts/custom-functions.js")
+    @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
     @Scripts.Render("~/bundles/jqueryval")
 }
