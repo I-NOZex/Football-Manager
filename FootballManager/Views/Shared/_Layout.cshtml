@@ -18,14 +18,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("FManager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Equipas", "Index", "Teams")</li>
+                    <li>@Html.ActionLink("Championships", "Index", "Championships")</li>
+                    <li>@Html.ActionLink("Seasons", "Index", "Seasons")</li>
+                    <li>@Html.ActionLink("Matches", "Index", "Matches")</li>
+                    <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
+                    <li>@Html.ActionLink("Players", "Index", "Players")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
