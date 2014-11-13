@@ -23,7 +23,7 @@ namespace FootballManager.Controllers
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
-            UserManager = userManager;
+            _userManager = userManager;
             SignInManager = signInManager;
         }
 
@@ -156,8 +156,13 @@ namespace FootballManager.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Name, Email = model.Email, EmailConfirmed = true };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+
                 if (result.Succeeded)
                 {
+                    var userToRole = UserManager.Find(model.Name, model.Password);
+                    var addToRole = await UserManager.AddToRoleAsync(userToRole.Id, "ChampionshipManager");
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

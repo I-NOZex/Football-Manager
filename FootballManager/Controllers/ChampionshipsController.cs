@@ -12,6 +12,7 @@ using System.Data.Entity.Validation;
 
 namespace FootballManager.Controllers
 {
+    [Authorize]
     public class ChampionshipsController : Controller
     {
         private FMDBEntities db = new FMDBEntities();
@@ -42,6 +43,7 @@ namespace FootballManager.Controllers
         }
 
         // GET: Championships/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name");
@@ -54,6 +56,7 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID,Name,LogoPath,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {           
             if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {
@@ -158,6 +161,7 @@ namespace FootballManager.Controllers
         }
 
         // GET: Championships/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -175,6 +179,7 @@ namespace FootballManager.Controllers
         // POST: Championships/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Championship championship = db.Championship.Find(id);

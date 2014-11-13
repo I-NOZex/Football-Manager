@@ -10,6 +10,7 @@ using FootballManager.Models;
 
 namespace FootballManager.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountriesController : Controller
     {
         private FMDBEntities db = new FMDBEntities();
