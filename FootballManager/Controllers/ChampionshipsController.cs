@@ -106,6 +106,9 @@ namespace FootballManager.Controllers
             {
                 return HttpNotFound();
             }
+            if (championship.Logo != null) {
+                ViewBag.Logo = Utils.EncodeFile(Server.MapPath(championship.Logo.ToString()));
+            }
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name", championship.EntityMngID);
             ViewBag.CountryID = new SelectList(db.Country, "ID", "Name", championship.CountryID);
             return View(championship);
@@ -122,7 +125,7 @@ namespace FootballManager.Controllers
             championship.LogoPath.ContentLength > 0 &&
             championship.LogoPath.FileName != Path.GetFileName(championship.Logo) ) {
 
-                string filename = DateTime.Now.Ticks + Path.GetExtension(championship.LogoPath.FileName);
+                string filename = Path.GetFileName(championship.Logo);
 
                 var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), filename);
                 var imageUrl = Path.Combine(Utils.UPLOAD, filename);
@@ -149,12 +152,12 @@ namespace FootballManager.Controllers
                 }
             }
 
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 db.Entry(championship).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            }*/
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name", championship.EntityMngID);
             ViewBag.CountryID = new SelectList(db.Country, "ID", "Name", championship.CountryID);
             return View(championship);
