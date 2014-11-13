@@ -37,9 +37,16 @@ namespace FootballManager.Controllers
         }
 
         // GET: Journeys/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name");
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Championship champ = db.Championship.Find(id);
+            if (champ == null) {
+                return HttpNotFound();
+            }
+            ViewBag.ChampshipID = id;
             return View();
         }
 
@@ -48,13 +55,16 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ChampshipID,DateBegin,DateEnd")] Journey journey)
+        public ActionResult Create([Bind(Include = "ID,ChampshipID,DateBegin,DateEnd")] Journey journey, string champID)
         {
+
+            System.Diagnostics.Trace.WriteLine(champID);
+            journey.ChampshipID = int.Parse(champID);
             if (ModelState.IsValid)
             {
                 db.Journey.Add(journey);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Matches", new { area = "", id = journey.ID });
             }
 
             ViewBag.ChampshipID = new SelectList(db.Championship, "ID", "Name", journey.ChampshipID);

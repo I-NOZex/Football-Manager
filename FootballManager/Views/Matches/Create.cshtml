@@ -15,13 +15,8 @@
         <h4>Match</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.JourneyID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.JourneyID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.JourneyID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+        @Html.Hidden("journeyID", (object)ViewBag.journeyID, new { htmlAttributes = new { name = "journeyID" } })
 
         <div class="form-group">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })

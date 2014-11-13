@@ -23,6 +23,7 @@ namespace FootballManager {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/datepicker.css",
+                      "~/Content/select2.css",
                       "~/Content/select2-bootstrap.css",
                       "~/Content/site.css"));
 

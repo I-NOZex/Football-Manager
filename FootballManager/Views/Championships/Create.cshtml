@@ -63,6 +63,19 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.TeamPoints, "Teams", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*Html.DropDownList("Teams", null, htmlAttributes: new { @class = "form-control select2" })*@
+                @*Html.HiddenFor(model => model.TeamPoints, new { id = "CUSTOMERID", @class = " input-block-level  bigdrop", placeholder = "Search for customer" })*@
+                @Html.ValidationMessageFor(model => model.TeamPoints, "", new { @class = "text-danger" })
+                @*Html.ListBoxFor(x => x.SelectedTeams, ViewBag.Teams, new {
+                   multiple = "multiple",
+                   id = "CUSTOMERID"
+               });*@
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
@@ -75,7 +88,8 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/custom-functions.js")
     @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
+    @Scripts.Render("~/Scripts/select2.min.js")
+    @Scripts.Render("~/Scripts/custom-functions.js")
     @Scripts.Render("~/bundles/jqueryval")
 }

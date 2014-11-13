@@ -12,6 +12,7 @@ namespace FootballManager.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class MatchGoals
     {
@@ -26,11 +27,15 @@ namespace FootballManager.Models
         [Required]
         public int PlayerID { get; set; }
 
+        
+        public System.DateTime Time { get; set; }
+
         [Required]
+        [NotMapped]
         //[DataType(DataType.Time, ErrorMessage = "Please enter a valid date")]
         //[DisplayFormat(DataFormatString = "{0:mm\\:ss}", ApplyFormatInEditMode = true)]
         [RegularExpression("^(00:[0-5][1-9])|(([1-119]){1,3}:([0-5][0-9]))|(120:00)$", ErrorMessage = "Please enter a valid time, between 00:01 and 120:00")]
-        public System.DateTime Time { get; set; }
+        public string goalTime { get; set; }
     
         public virtual Match Match { get; set; }
         public virtual Player Player { get; set; }

@@ -51,6 +51,28 @@
         </dd>
 
     </dl>
+
+    <table class="table">
+        <tr>
+            <td>
+                Equipa
+            </td>
+            <td align="right">
+                Hora
+            </td>
+        </tr>
+        @foreach (var item in Model.MatchGoals) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.Name)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

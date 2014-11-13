@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FootballManager.Models;
+using System.Data.Entity.Validation;
 
 namespace FootballManager.Controllers
 {
@@ -50,13 +51,14 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,MatchID,TeamID,PlayerID,Time")] MatchGoals matchGoals)
+        public ActionResult Create([Bind(Include = "ID,MatchID,goalTime,TeamID,PlayerID,Time")] MatchGoals matchGoals)
         {
             //atribui o tempo a que o golo foi marcado e converte para string
-            string time = matchGoals.Time.ToString();
+            string time = matchGoals.goalTime;
             //divide o tempo numa array em que o primeiro valor corresponde a MM(M) e o segundo a SS
             //converte os valores para int
             int[] timeArr = Array.ConvertAll(time.Split(':'), int.Parse);
+            //int[] timeArr = time.Split(':').Select(n => Convert.ToInt32(n)).ToArray();
 
             //converte MM(M) para H:MM
             int totalMinutes = timeArr[0];
@@ -70,12 +72,23 @@ namespace FootballManager.Controllers
             DateTime date = new DateTime(currDate.Year, currDate.Month, currDate.Day, hours, min, sec);
             //atribui o tempo a que o golo foi marcado convertido de MM(M):SS para HH:MM:SS
             matchGoals.Time = date;
+            matchGoals.PlayerID = 2;
 
-            if (ModelState.IsValid)
-            {
-                db.MatchGoals.Add(matchGoals);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            if (ModelState.IsValid) {
+                try{
+                    db.MatchGoals.Add(matchGoals);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                } catch (DbEntityValidationException dbEx) {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {                            
+                            System.Diagnostics.Trace.TraceInformation("\n\rProperty: {0}\n\r Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                            return RedirectToAction("Create");
+                        }
+                    }
+                }
             }
 
             ViewBag.MatchID = new SelectList(db.Match, "ID", "ID", matchGoals.MatchID);

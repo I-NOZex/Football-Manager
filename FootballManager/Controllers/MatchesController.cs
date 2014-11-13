@@ -37,8 +37,16 @@ namespace FootballManager.Controllers
         }
 
         // GET: Matches/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Championship champ = db.Championship.Find(id);
+            if (champ == null) {
+                return HttpNotFound();
+            }
+            ViewBag.journeyID = id;
+
             ViewBag.GuestTeamID = new SelectList(db.Team, "ID", "Name");
             ViewBag.VisitorTeamID = new SelectList(db.Team, "ID", "Name");
             return View();
@@ -49,8 +57,11 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,JourneyID,Date,KickoffTime,VisitorTeamID,GuestTeamID")] Match match)
+        public ActionResult Create([Bind(Include = "ID,JourneyID,Date,KickoffTime,VisitorTeamID,GuestTeamID")] Match match, string journeyID)
         {
+
+            System.Diagnostics.Trace.WriteLine(journeyID);
+            match.JourneyID = int.Parse(journeyID);
             if (ModelState.IsValid)
             {
                 db.Match.Add(match);

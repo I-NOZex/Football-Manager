@@ -29,7 +29,7 @@ namespace FootballManager.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime Date { get; set; }
 
-        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date")]
+        [DataType(DataType.Time, ErrorMessage = "Please enter a valid date")]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm\\:ss}", ApplyFormatInEditMode = true)]
         public System.DateTime KickoffTime { get; set; }
 

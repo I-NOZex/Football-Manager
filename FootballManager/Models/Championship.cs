@@ -15,6 +15,7 @@ namespace FootballManager.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
+    using System.Web.Mvc;
     
     public partial class Championship
     {
@@ -49,7 +50,10 @@ namespace FootballManager.Models
 
         [Required]
         public int EntityMngID { get; set; }
-    
+
+        public SelectList Teams { get; set; }
+        public string[] SelectedTeams { get; set; } 
+
         public virtual EntityManager EntityManager { get; set; }
         public virtual Country Country { get; set; }
         public virtual ICollection<Journey> Journey { get; set; }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using FootballManager.Models;
 using System.IO;
 using System.Data.Entity.Validation;
+using FootballManager.DAL;
 
 namespace FootballManager.Controllers
 {
@@ -46,6 +47,7 @@ namespace FootballManager.Controllers
         {
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name");
             ViewBag.CountryID = new SelectList(db.Country, "ID", "Name");
+            ViewBag.Teams = new SelectList(db.Team, "ID", "Name");
             return View();
         }
 
@@ -71,7 +73,7 @@ namespace FootballManager.Controllers
                 try { 
                 db.Championship.Add(championship);
                 db.SaveChanges();
-                return RedirectToAction("Details", new { id = championship.ID });
+                return RedirectToAction("Create", "Journeys", new { area = "", id = championship.ID });
 
 
                 } catch (DbEntityValidationException dbEx) {
@@ -194,5 +196,6 @@ namespace FootballManager.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
