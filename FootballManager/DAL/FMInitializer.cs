@@ -18,31 +18,37 @@ namespace FootballManager.DAL
 
             const string name = "Admin";
             const string password = "Admin@123456";
-            const string roleName = "Admin";
+            const string email = "admin@fmanager.pt";
+
+            const string roleAdmin = "Admin";
+            const string roleUser = "ChampionshipManager";
 
             //Create Role Admin if it does not exist
-            var role = roleManager.FindByName(roleName);
+            var role1 = roleManager.FindByName(roleAdmin);
+            var role2 = roleManager.FindByName(roleUser);
 
-            if (role == null)
+            if (role1 == null)
             {
-                role = new IdentityRole(roleName);
-                var roleresult = roleManager.Create(role);
+                role1 = new IdentityRole(roleAdmin);
+                role2 = new IdentityRole(roleUser);
+                var roleresult1 = roleManager.Create(role1);
+                var roleresult2 = roleManager.Create(role2);
             }
 
             var user = userManager.FindByName(name);
 
             if (user == null)
             {
-                user = new ApplicationUser { UserName = name };
+                user = new ApplicationUser { UserName = name , Email = email, EmailConfirmed = true};
                 var result = userManager.Create(user, password);
             }
 
             // Add user admin to Role Admin if not already added
             var rolesForUser = userManager.GetRoles(user.Id);
 
-            if (!rolesForUser.Contains(role.Name))
+            if (!rolesForUser.Contains(role1.Name))
             {
-                var result = userManager.AddToRole(user.Id, role.Name);
+                var result = userManager.AddToRole(user.Id, role1.Name);
             }
         }
     }

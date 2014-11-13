@@ -10,6 +10,7 @@ using FootballManager.Models;
 
 namespace FootballManager.Controllers
 {
+    [Authorize]
     public class TeamsController : Controller
     {
         private FMDBEntities db = new FMDBEntities();
@@ -95,6 +96,7 @@ namespace FootballManager.Controllers
         }
 
         // GET: Teams/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +114,7 @@ namespace FootballManager.Controllers
         // POST: Teams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Team team = db.Team.Find(id);

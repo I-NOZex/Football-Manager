@@ -10,7 +10,7 @@ using FootballManager.Models;
 
 namespace FootballManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ManageController : Controller
     {
         public ManageController()

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MvcIdentity.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SettingsController : Controller
     {
         //

@@ -10,6 +10,7 @@ using FootballManager.Models;
 
 namespace FootballManager.Controllers
 {
+    [Authorize]
     public class TeamPointsController : Controller
     {
         private FMDBEntities db = new FMDBEntities();
