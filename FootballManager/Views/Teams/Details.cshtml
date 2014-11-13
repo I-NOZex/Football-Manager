@@ -51,6 +51,50 @@
         </dd>
 
     </dl>
+    <table class="table">
+        <tr>
+            <td>
+                Championships
+            </td>
+            <td>
+                Points
+            </td>
+        </tr>
+        @foreach (var item in Model.TeamPoints)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Championship.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Points)
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <table class="table">
+        <tr>
+            <td>
+                Players
+            </td>
+            <td align="right">
+                @Html.ActionLink("Add Player", "Create", "Players/Create")
+            </td>
+        </tr>
+        @foreach (var item in Model.Player)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td align="right">
+                    @Html.ActionLink("Details", "Players/Details", new { id = item.ID })
+                    @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

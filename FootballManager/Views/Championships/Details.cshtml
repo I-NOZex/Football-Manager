@@ -52,8 +52,30 @@
         <dd>
             @Html.DisplayFor(model => model.Country.Name)
         </dd>
-
     </dl>
+
+    <table class="table">
+        <tr>
+            <td>
+                Seasons
+            </td>
+            <td align="right">
+                @Html.ActionLink("Add Season", "Create", "Season/Create")
+            </td>
+        </tr>
+        @foreach (var item in Model.Season)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td align="right">
+                    @Html.ActionLink("Details", "Seasons/Details", new { id = item.ID })
+                    @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

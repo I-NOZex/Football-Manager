@@ -35,6 +35,29 @@
         </dd>
 
     </dl>
+    <table class="table">
+        <tr>
+            <td>
+                Journeys
+            </td>
+            <td align="right">
+                @Html.ActionLink("Add Journey", "Create", "Journeys/Create")
+            </td>
+        </tr>
+        @foreach (var item in Model.Championship.Journey)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateBegin) /
+                    @Html.DisplayFor(modelItem => item.DateEnd)
+                </td>
+                <td align="right">
+                    @Html.ActionLink("Details", "Journeys/Details", new { id = item.ID })
+                    @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
