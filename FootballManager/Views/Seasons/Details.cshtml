@@ -52,12 +52,35 @@
                     @Html.DisplayFor(modelItem => item.DateEnd)
                 </td>
                 <td align="right">
-                    @Html.ActionLink("Details", "Journeys/Details", new { id = item.ID })
+                    @Html.ActionLink("Details", "Details", "Journeys", new { id = item.ID }, null)
                     @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
                 </td>
             </tr>
         }
     </table>
+
+    <table class="table">
+        <tr>
+            <td>
+                Teams
+            </td>
+            <td align="right">
+                @Html.ActionLink("Add Season", "Create", "Season/Create")
+            </td>
+        </tr>
+        @foreach (var item in Model.Championship.TeamPoints) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.Name)
+                </td>
+                <td align="right">
+                    @Html.ActionLink("Details", "Details", "Teams", new { id = item.Team.ID }, null)
+                    @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                </td>
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
