@@ -27,11 +27,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FundationDate)
+            @*@Html.DisplayNameFor(model => model.FundationDate)*@
+            Fundation Date
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FundationDate)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Country.Name)*@
+            Country
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
         </dd>
 
         <dt>
@@ -41,20 +51,11 @@
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country.Name)
-        </dd>
-
     </dl>
     <table class="table">
         <tr>
             <td>
-                Championships
+                <h4>Championships</h4>
             </td>
             <td>
                 Points
@@ -76,7 +77,7 @@
     <table class="table">
         <tr>
             <td>
-                Players
+                <h4>Players</h4>
             </td>
             <td align="right">
                 @Html.ActionLink("Add Player", "Create", "Players/Create")
@@ -89,7 +90,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td align="right">
-                    @Html.ActionLink("Details", "Players/Details", new { id = item.ID })
+                    @Html.ActionLink("Details", "Players/Details", , new { id = item.ID })
                     @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
                 </td>
             </tr>

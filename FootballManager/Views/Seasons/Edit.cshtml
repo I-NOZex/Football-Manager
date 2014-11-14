@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ChampshipID, "ChampshipID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ChampshipID, "Championship", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ChampshipID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ChampshipID, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfTeams, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NumberOfTeams, "Number of Teams", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumberOfTeams, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumberOfTeams, "", new { @class = "text-danger" })

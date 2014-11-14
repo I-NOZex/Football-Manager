@@ -18,13 +18,15 @@
             @Html.DisplayNameFor(model => model.Logo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FundationDate)
+            @*@Html.DisplayNameFor(model => model.FundationDate)*@
+            Fundation Date
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Country.Name)*@
+            Country
         </th>
         <th>
             @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country.Name)
         </th>
         <th></th>
     </tr>
@@ -41,10 +43,10 @@
             @Html.DisplayFor(modelItem => item.FundationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.City)
+            @Html.DisplayFor(modelItem => item.Country.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Country.Name)
+            @Html.DisplayFor(modelItem => item.City)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

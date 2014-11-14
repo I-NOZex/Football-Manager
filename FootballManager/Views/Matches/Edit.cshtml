@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KickoffTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.KickoffTime, "KickOff Time", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.KickoffTime, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.KickoffTime, "", new { @class = "text-danger" })
@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VisitorTeamID, "VisitorTeamID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VisitorTeamID, "Home Team", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("VisitorTeamID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VisitorTeamID, "", new { @class = "text-danger" })
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GuestTeamID, "GuestTeamID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GuestTeamID, "Visitor Team", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("GuestTeamID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GuestTeamID, "", new { @class = "text-danger" })

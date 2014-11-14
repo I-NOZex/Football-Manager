@@ -28,11 +28,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FundationDate)
+            @*@Html.DisplayNameFor(model => model.FundationDate)*@
+            Fundation Date
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FundationDate)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Country.Name)*@
+            Country
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
         </dd>
 
         <dt>
@@ -41,14 +51,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country.Name)
         </dd>
 
     </dl>

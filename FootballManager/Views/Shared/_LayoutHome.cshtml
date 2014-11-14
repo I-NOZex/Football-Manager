@@ -76,7 +76,7 @@
                                     @Html.ActionLink("View Teams", "Index", "Teams")
                                 </li>
                                 <li>
-                                    @Html.ActionLink("Create Teams", "Index", "Teams")
+                                    @Html.ActionLink("Create Teams", "Create", "Teams")
                                 </li>
                             </ul>
 
@@ -121,15 +121,35 @@
                             </ul>
                         </li>
                         <li class="current nav navbar-nav navbar-right">
-                            <a href="#">User</a>
-                            <ul class="sub-current">
-                                <li>
-                                    @Html.ActionLink("Login", "Login", "Account")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Register", "Register", "Account")
-                                </li>
-                            </ul>
+                            @using Microsoft.AspNet.Identity
+                            @if (Request.IsAuthenticated) {
+                                <a href="#">Hello @User.Identity.GetUserName()</a>
+                                <ul class="sub-current">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>@Html.ActionLink("Countries", "Index", "Countries")</li>
+                                        <li>@Html.ActionLink("Entity Managers", "Index", "EntityManagers")</li>
+                                    }
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                                        @Html.AntiForgeryToken()
+                                        <li>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <a href="#">User</a>
+                                <ul class="sub-current">
+                                    <li>
+                                        @Html.ActionLink("Login", "Login", "Account")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Register", "Register", "Account")
+                                    </li>
+                                </ul>
+                            }
 
                         </li>
                     </ul>

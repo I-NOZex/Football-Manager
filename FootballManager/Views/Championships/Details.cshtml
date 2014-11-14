@@ -30,7 +30,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FoudationDate)
+            @*@Html.DisplayNameFor(model => model.FoudationDate)*@
+            Fundation Date
         </dt>
 
         <dd>
@@ -38,7 +39,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EntityManager.Name)
+            @*@Html.DisplayNameFor(model => model.EntityManager.Name)*@
+            Entity Manager
         </dt>
 
         <dd>
@@ -46,7 +48,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Country.Name)
+            @*@Html.DisplayNameFor(model => model.Country.Name)*@
+            Country
         </dt>
 
         <dd>
@@ -57,7 +60,7 @@
     <table class="table">
         <tr>
             <td>
-                Journey Year
+                <h4>Journey Year</h4>
             </td>
             <td align="right">
                 @Html.ActionLink("Add Journey", "Create", "Journeys", new { id = Model.ID }, null)
@@ -77,7 +80,26 @@
             </tr>
         }
     </table>
-
+    <br />
+    <table class="table">
+        <tr>
+            <td colspan="2">
+                <h4>Teams</h4>
+            </td>
+        </tr>
+        @foreach (var item in Model.TeamPoints)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.Name)
+                </td>
+                <td align="right">
+                    @Html.ActionLink("Details", "Details", "Teams", new { id = item.Team.Name }, null)
+                    @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

@@ -11,7 +11,8 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DateBegin)
+            @*@Html.DisplayNameFor(model => model.DateBegin)*@
+            Begin Date
         </dt>
 
         <dd>
@@ -19,7 +20,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateEnd)
+            @*@Html.DisplayNameFor(model => model.DateEnd)*@
+            End Date
         </dt>
 
         <dd>
@@ -27,7 +29,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Championship.Name)
+            @*@Html.DisplayNameFor(model => model.Championship.Name)*@
+            Championship
         </dt>
 
         <dd>
@@ -38,19 +41,26 @@
 
     <table class="table">
         <tr>
-            <td>
-                Matches
+            <td colspan="3">
+                <h4>Matches</h4>
             </td>
             <td align="right">
                 @Html.ActionLink("Add Match", "Create", "Matches", new { id = Model.ID }, null)
             </td>
+        </tr>
+        <tr>
+            <td>Home Team</td>
+            <td>VS</td>
+            <td>Away Team</td>
         </tr>
         @foreach (var item in Model.Championship.TeamPoints) {
             foreach (var match in item.Team.Match) { 
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => match.Team.Name)
-                            vs
+                    </td>
+                    <td>VS</td>
+                    <td>
                         @Html.DisplayFor(modelItem => match.Team1.Name)
                         @*@Html.DisplayFor(modelItem => item.DateEnd.Year)*@
                     </td>
