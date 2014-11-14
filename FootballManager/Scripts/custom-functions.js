@@ -1,6 +1,8 @@
 ﻿$(function () {
     $("input.datepicker").datepicker({
         format: "dd/mm/yyyy"
+    }).on('changeDate', function (ev) {
+        $(".datepicker.dropdown-menu").hide();
     });
 
     //$(".select2").select2({ });
