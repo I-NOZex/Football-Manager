@@ -49,26 +49,28 @@
             </td>
         </tr>
         <tr>
-            <td>Home Team</td>
-            <td>VS</td>
-            <td>Away Team</td>
+            <td><h6>Team</h6></td>
+            <td><h6>VS</h6></td>
+            <td><h6>Away Team</h6></td>
         </tr>
         @foreach (var item in Model.Championship.TeamPoints) {
-            foreach (var match in item.Team.Match) { 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => match.Team.Name)
-                    </td>
-                    <td>VS</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => match.Team1.Name)
-                        @*@Html.DisplayFor(modelItem => item.DateEnd.Year)*@
-                    </td>
-                    <td align="right">
-                        @*@Html.ActionLink("Details", "Details", "Journeys", new { id = item.ID }, null)*@
-                        @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
-                    </td>
-                </tr>
+            foreach (var match in item.Team.Match) {
+                if (match.JourneyID == Model.ID) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => match.Team.Name)
+                        </td>
+                        <td>VS</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => match.Team1.Name)
+                            @*@Html.DisplayFor(modelItem => item.DateEnd.Year)*@
+                        </td>
+                        <td align="right">
+                            @*@Html.ActionLink("Details", "Details", "Journeys", new { id = item.ID }, null)*@
+                            @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                        </td>
+                    </tr>
+                }
             }
         }
     </table>
