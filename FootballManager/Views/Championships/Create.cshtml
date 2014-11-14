@@ -67,9 +67,10 @@
                 @*Html.DropDownList("Teams", null, htmlAttributes: new { @class = "form-control select2" })*@
                 @*Html.HiddenFor(model => model.TeamPoints, new { id = "CUSTOMERID", @class = " input-block-level  bigdrop", placeholder = "Search for customer" })*@
                 @Html.ValidationMessageFor(model => model.TeamPoints, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.SelectedTeams, new { id = "teams", @class = " input-block-level", placeholder = "Search for team" })
-                <input type="hidden" class="select2-offscreen" id="teams-hide" style="width:100%" value="" />
-                @*<input type="text" class="hidden" id="teams" name="teams" value="ViewBag.Teams" />*@
+                @*@Html.HiddenFor(model => model.SelectedTeams, new { id = "teams", @class = " input-block-level", placeholder = "Search for team" })*@
+                @Html.HiddenFor(model => model.SelectedTeams, new { id = "teams-hide", @class = "select2-offscreen", value = "" })
+                @*<input type="hidden" name="SelectedTeams" class="select2-offscreen" id="teams-hide" style="width:100%" value="" />*@
+                <input type="hidden" class="input-block-level" id="teams" name="teams" value="" placeholder="Search for team" />
             </div>
         </div>
 
