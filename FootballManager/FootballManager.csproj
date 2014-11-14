@@ -420,6 +420,7 @@
     <Content Include="Content\uploads\635515289983721505.png" />
     <Content Include="Content\uploads\loading.gif" />
     <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
