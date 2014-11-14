@@ -1,0 +1,255 @@
+/* ---------------------------------------------------------------------- */
+/*	Version 1500px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 1500px) {
+	
+	.layout-wide .crumbs:before{
+	    left: 15%;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Version 1280px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 1250px) {
+
+	.dark-home{
+		height: auto;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Version 1024px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 1024px) {
+	
+
+	/* Slide Responsive---------------------------------------------------*/
+	
+	.camera_wrap {	
+		height: 550px;
+	}	
+	.style-caption h1{
+		font-size: 32px;
+		line-height: 42px;
+	}
+	.style-caption p{
+		font-size: 16px;
+		line-height: 26px;		
+	}
+	.more .btn{
+		padding: 8px 20px;
+		font-size: 14px;
+	}
+
+	.dark-home,
+	.content-counter{
+		height: auto;
+		max-width: 940px;
+	}
+	.section-title{
+		height: 290px;
+	}
+	.semiboxshadow img {
+		display: none;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	 Version 1000px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 999px) {
+	
+	header{		
+		position: relative;		
+	}
+
+	/* Nav Responsive ----------------------------------------------------*/
+
+	#menu{
+		display: none;	
+	}
+	.tinynav {
+		display: inline;
+		width: 60%;	
+		border-radius: 0;
+		font-size: 14px;
+		padding: 5px 10px;
+		border: 1px solid #dbdbdb;
+		height: 30px;	
+		margin: 15px 20% 15px 20%;
+	} 
+	/* Slide Responsive---------------------------------------------------*/
+	
+	.camera_wrap {	
+		height: 450px;
+	}	
+	.style-caption h1{
+		font-size: 32px;
+		line-height: 42px;
+	}
+	.style-caption p{
+		font-size: 16px;
+		line-height: 26px;		
+	}
+	.more .btn{
+		padding: 8px 20px;
+		font-size: 14px;
+	}
+
+	.content-info{	
+		max-width: auto;
+		margin-top: 0;
+		margin-bottom: -120px;
+	}
+	.dark-home,
+	.content-counter{
+		height: auto;
+		max-width: 720px;
+	}
+	.section-title{
+		height: 160px;
+		text-align: center;
+	}
+	.crumbs{
+		text-align: center;
+	}
+	.crumbs:before,
+	.layout-wide .crumbs:before{
+	    left: 50%;
+	    margin-left: -20px;
+	}
+	.title-color{
+		margin-top: 30px;
+	}
+	.layout-wide .content-info,
+	.layout-wide .dark-home{	
+		max-width: auto;	
+	}
+	.layout-wide .dark-home .row{
+		max-width: 720px;
+		margin: 0px auto;
+	}
+	.layout-wide .semiboxshadow{
+		display: none;
+	}
+
+	.layout-boxed-margin{
+		max-width: 1230px;
+		margin: 0 auto;
+	}
+	.newsletter .input-group{
+		margin: 0 auto 20px auto;
+		max-width: 480px;
+	}
+	.footer-down,
+	.footer-down ul,
+	header{
+		text-align: center;
+	}
+	footer h4,
+	.post-item h4{
+		margin-top: 20px;
+	}
+	.titles h4{
+		padding: 10px 20px;
+	}
+	.item-clubs{
+		max-width: 430px;
+		margin: 0 auto 30px auto;
+	}
+	.tab-content{
+		margin-left: 3%;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	 Mobile Version 768px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 768px) {
+	
+	/* Slide Responsive---------------------------------------------------*/
+	
+	.camera_wrap {	
+		height: 400px;
+	}	
+	.style-caption h1{
+		font-size: 26px;
+		line-height: 36px;
+		margin-top: 60px;
+		max-width: 500px;
+	}
+	.style-caption p{
+		font-size: 14px;
+		line-height: 24px;		
+		max-width: 500px;
+	}
+	.more .btn{
+		padding: 8px 20px;
+		font-size: 14px;
+	}
+	footer{
+		text-align: center;
+	}
+	.fa-twitter.twit-list{
+		float: none;
+		margin: 0;
+	}
+
+	.dark-home,
+	.content-counter{
+		height: auto;
+		max-width: 720px;
+	}
+
+}
+
+/* ---------------------------------------------------------------------- */
+/*	 Version 600px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 600px) {
+	
+	.nav-tabs li a{
+		padding: 12px 10px;
+		font-size: 12px;
+	}
+	.nav-tabs{
+		margin-top: -41px;
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*	 Version 480px
+/* ---------------------------------------------------------------------- */
+
+@media handheld, only screen and (max-width: 480px) {
+	
+	#players-carousel li.item-player,
+	.blog-carousel li{
+		max-width: 300px;
+		margin: 0 auto;
+		float: none;
+	}
+	.blog-no-carousel li{
+		max-width: 380px;
+		width: 100%;
+		margin: 0 auto 30px auto;
+	}
+	/* Filters ---------------------------------*/
+
+	.portfolioFilter a{
+		display: block;
+		z-index: 99;
+
+	}
+}

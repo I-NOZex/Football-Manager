@@ -1,0 +1,123 @@
+/* Backgrounds ----------------------------------------------------------*/
+
+.camera_prevThumbs, .camera_nextThumbs, .camera_prev, .camera_next, .camera_commands, .camera_thumbs_cont,
+.camera_wrap .camera_pag .camera_pag_ul li.cameracurrent > span,
+.btn-primary,
+.btn-primary:hover,
+.style-caption h1,
+.nav-tabs li.active a,
+.nav-tabs li.active a:hover,
+.nav-tabs li a:hover,
+.title-color,
+.tags a:hover,
+.title-aside,
+.pagination .active,
+.info-player h4 a,
+.tooltip-inner,
+.portfolioFilter .current,
+.portfolioFilter a:hover,
+.owl-theme .owl-controls .owl-buttons div,
+#theme-options .layout-style li.active,
+.thumbs li:hover,
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span,
+.pagination > .active > a,
+.pagination > .active:hover > a{
+	background: #88C425; 
+	background-color: #88C425; 
+}
+.footer-down{
+	background: #88C425 url("../img/img-theme/footer-down.png") repeat-x left 1px;
+}
+.events-carousel li .header-post .date{
+	background: #88C425;  
+	background: rgba(136, 196, 37, 0.6);
+}
+
+/* Colors ----------------------------------------------------------*/
+
+blockquote > a,
+.tweet_time a,
+.tweet_text a,
+.tags i,
+.text-resalt,
+.post-item h4 a:hover,
+.post-item p a,
+.links li i,
+.entry-title a,
+.info-clubs h4 a:hover,
+.sf-menu .sf-mega ul li a:hover,
+.sf-menu li li a:hover,
+.crumbs ul li a:hover,
+.acc-trigger a:hover, .acc-trigger.active a, .acc-trigger.active a:hover,
+.crumbs li a,
+.page-error h1 i,
+.sitemap li a:hover,
+.pagination > li > a, .pagination > li > span,
+address i,
+address a,
+.list li i,
+.events-carousel h4 a,
+.pagination > li:hover a{
+	color: #88C425;
+}
+
+/* Borders ----------------------------------------------------------*/
+
+.nav-tabs li.active:after {
+	border: 6px solid #88C425;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	bottom: -11px;
+	content: "";
+	left: 50%;
+	margin-left: -6px;
+	position: absolute;
+	z-index: 101;
+}
+.style-caption p,
+.item-clubs{
+	border-right: 5px solid #88C425;	
+}
+.titles h4{
+	border-left: 5px solid #88C425;
+}
+.pagination > .active > a,
+.pagination > .active:hover > a{
+	border-color: #88C425;
+}
+.style-caption h1:before{
+	border-top: 40px solid transparent;
+	border-bottom: 40px solid transparent;
+	border-left: 40px solid #88C425;
+}
+.crumbs:before{
+	border-bottom: 20px solid #88C425;
+}
+.tooltip.top .tooltip-arrow {
+  border-top-color: #88C425;
+}
+.sf-menu li:hover > .sf-mega,
+.sf-menu li.sfHover > .sf-mega,
+.mainmenu,
+.sf-menu .sub-current,
+.header-2,
+.header-2 .is-sticky{
+	border-bottom: 3px solid #88C425;
+}
+header,
+.overlay-player,
+.crumbs{
+	border-top: 3px solid #88C425;
+}
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+  border-top-color: #88C425; 
+}
+ul.sub-current .current  > .sf-with-ul:focus:after,
+ul.sub-current .current:hover > .sf-with-ul:after,
+ul.sub-current .current .sfHover > .sf-with-ul:after {
+  border-left-color: #88C425; 
+}

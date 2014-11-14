@@ -1,0 +1,177 @@
+/*** Superfish ------------------------*/
+.sf-menu  .current{
+  position: relative; 
+}
+.sf-menu .sub-current {
+  position: absolute;
+  background-color: #fff;
+  display: none;
+  top: 64px;
+  left: 0;
+  width: 160px;
+  z-index: 99;
+}
+.sf-menu .sub-current ul {
+  width: 160px;
+}
+.sf-menu .sub-current li{
+  border-bottom: 1px solid #eee;
+}
+.sf-menu .sub-current li a{
+  display:block;
+  margin:0;
+  position:relative;
+  text-decoration:none;
+  font-size:12px;
+  line-height:16px;
+  color:#131313;
+  overflow:hidden;
+  padding:12px 15px;  
+  background: #f9f9f9;
+  -webkit-transition: 0.3s all ease;
+  -moz-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  -ms-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+.sf-menu li:hover > .sub-current,
+.sf-menu li.sfHover > .sub-current {
+  display: block;
+}
+.sf-menu .sub-current .sub-current {
+  top: 0;
+  left: 100%;
+}
+
+
+/* Megafish --------------------------------*/
+
+.sf-menu {
+  position: relative;
+  margin: 0;
+  margin-left: -9px;
+  padding: 0;
+  list-style: none;
+  z-index: 999;
+}
+.sf-menu .sf-mega {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  top: 64px;
+}
+.sf-menu > li {
+  float: left;
+}
+.sf-menu li:hover > .sf-mega,
+.sf-menu li.sfHover > .sf-mega {
+  display: block;
+  z-index: 999;
+  top: 64px;
+}
+
+.sf-menu > li > a {
+  display: block;
+  position: relative;
+}
+
+
+/*** DEMO SKIN ***/
+
+.sf-menu .sf-mega {
+  box-shadow: 2px 3px 6px rgba(0,0,0,.2);
+  width: 100%; /* allow long menu items to determine submenu width */
+}
+.sf-menu > li > a {
+  text-decoration:none;
+  display:block;
+  font-size:14px; 
+  font-weight: normal;
+  color:#fff;
+}
+.sf-menu > li {
+  margin:0 15px 0 0;  
+  padding: 20px 10px 18px 10px;
+  -webkit-transition: 0.2s all ease;
+  -moz-transition: 0.2s all ease;
+  -o-transition: 0.2s all ease;
+  -ms-transition: 0.2s all ease;
+  transition: 0.2s all ease;  
+}
+.sf-menu > li:hover,
+.sf-menu > li.sfHover {
+  
+}
+
+/*** mega menu dropdown ***/
+.sf-mega {
+  background-color: #f9f9f9;
+  padding: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+.sf-mega h4{
+  border-bottom: 2px double #dedede;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.sf-menu .sf-mega ul li{
+  border-bottom: 1px solid #dedede;
+  line-height: 40px;
+  padding-left: 10px;
+  z-index: 9999;
+}
+.sf-menu .sf-mega ul li:last-child{
+  border-bottom: 0;
+}
+.sf-menu .sf-mega ul li a:hover{
+  text-decoration: none;
+}
+.sf-menu .sf-mega ul li:hover{
+  background-color: #eee;
+}
+.sf-menu .sf-mega a{
+  font-size: 14px;
+  color: #666;
+  display: block;
+}
+
+/*** arrows (for all except IE7) **/
+.sf-arrows .sf-with-ul {
+  padding-right: 1.5em;
+  *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+}
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -3px;
+  height: 0;
+  width: 0;
+  /* order of following 3 rules important for fallbacks to work */
+  border: 5px solid transparent;
+  border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+  border-top-color: rgba(0,0,0,.5);
+}
+ul.sub-current .current .sf-with-ul:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-right: 5px;
+  height: 0;
+  width: 0;
+  /* order of following 3 rules important for fallbacks to work */
+  border: 5px solid transparent;
+  border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+  border-left-color: rgba(0,0,0,.5);
+}
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+ 
+}
