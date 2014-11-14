@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
 /* ============================== 
 	- Template Name: Sports Cup- Responsive HTML5  soccer and sports Template
@@ -363,6 +363,7 @@ iframe.video{
 	margin-top: 150px;
 	position: absolute;
 	z-index: 0;
+    height: 343px;
 }
 .nav-tabs{
 	margin-top: -44px;
