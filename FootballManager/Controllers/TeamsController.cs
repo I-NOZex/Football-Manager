@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FootballManager.Models;
+using System.IO;
 
 namespace FootballManager.Controllers
 {
@@ -49,8 +50,18 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Logo,FundationDate,CountryID,City")] Team team)
+        public ActionResult Create([Bind(Include = "ID,Name,LogoPath,FundationDate,CountryID,City")] Team team)
         {
+            if (team.LogoPath != null && team.LogoPath.ContentLength > 0) {
+                string filename = DateTime.Now.Ticks + Path.GetExtension(team.LogoPath.FileName);
+
+                var imagePath = Path.Combine(Server.MapPath(Utils.UPLOAD), filename);
+                var imageUrl = Path.Combine(Utils.UPLOAD, filename);
+                team.LogoPath.SaveAs(imagePath);
+
+                team.Logo = String.Concat(Utils.UPLOAD, "/", filename);
+
+            }
             if (ModelState.IsValid)
             {
                 db.Team.Add(team);
