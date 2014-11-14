@@ -253,7 +253,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\select2-bootstrap.css" />
+    <Content Include="Content\select2-spinner.gif" />
     <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.png" />
+    <Content Include="Content\select2x2.png" />
     <Content Include="Content\Theme\css\animate.css" />
     <Content Include="Content\Theme\css\bootstrap-theme.css" />
     <Content Include="Content\Theme\css\bootstrap.css" />
