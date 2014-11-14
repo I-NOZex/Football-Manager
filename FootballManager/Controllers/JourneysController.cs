@@ -34,6 +34,7 @@ namespace FootballManager.Controllers
             {
                 return HttpNotFound();
             }
+            @ViewBag.Matches = db.Match.Where(a => a.JourneyID == id);
             return View(journey);
         }
 

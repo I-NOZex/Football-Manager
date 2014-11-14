@@ -35,6 +35,34 @@
         </dd>
 
     </dl>
+
+    <table class="table">
+        <tr>
+            <td>
+                Matches
+            </td>
+            <td align="right">
+                @Html.ActionLink("Add Match", "Create", "Matches", new { id = Model.ID }, null)
+            </td>
+        </tr>
+        @foreach (var item in Model.Championship.TeamPoints) {
+            foreach (var match in item.Team.Match) { 
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => match.Team.Name)
+                            vs
+                        @Html.DisplayFor(modelItem => match.Team1.Name)
+                        @*@Html.DisplayFor(modelItem => item.DateEnd.Year)*@
+                    </td>
+                    <td align="right">
+                        @*@Html.ActionLink("Details", "Details", "Journeys", new { id = item.ID }, null)*@
+                        @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

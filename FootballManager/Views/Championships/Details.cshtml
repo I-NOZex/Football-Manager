@@ -57,20 +57,21 @@
     <table class="table">
         <tr>
             <td>
-                Seasons
+                Journey Year
             </td>
             <td align="right">
-                @Html.ActionLink("Add Season", "Create", "Season/Create")
+                @Html.ActionLink("Add Journey", "Create", "Journeys", new { id = Model.ID }, null)
             </td>
         </tr>
-        @foreach (var item in Model.Season)
+        @foreach (var item in Model.Journey)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Year)
+                    @Html.DisplayFor(modelItem => item.DateBegin.Year)/
+                    @Html.DisplayFor(modelItem => item.DateEnd.Year)
                 </td>
                 <td align="right">
-                    @Html.ActionLink("Details","Details", "Seasons", new { id = item.ID }, null)
+                    @Html.ActionLink("Details","Details", "Journeys", new { id = item.ID }, null)
                     @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
                 </td>
             </tr>
