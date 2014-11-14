@@ -9,6 +9,7 @@ Version: 3.5.2 Timestamp: Sat Nov  1 14:43:36 EDT 2014
     zoom: 1;
     *display: inline;
     vertical-align: middle;
+    width: 100%;
 }
 
 .select2-container,
@@ -501,6 +502,8 @@ disabled look for disabled choices in the results dropdown
     background-image: -webkit-linear-gradient(top, #eee 1%, #fff 15%);
     background-image: -moz-linear-gradient(top, #eee 1%, #fff 15%);
     background-image: linear-gradient(to bottom, #eee 1%, #fff 15%);
+
+    border-radius: 4px;
 }
 
 html[dir="rtl"] .select2-container-multi .select2-choices {

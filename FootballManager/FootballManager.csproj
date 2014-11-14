@@ -580,6 +580,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Roles\ManageUserRoles.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

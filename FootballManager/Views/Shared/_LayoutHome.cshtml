@@ -38,7 +38,7 @@
     <![endif]-->
     <!-- Skins Changer-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
+
 
 </head>
 <body>
@@ -52,7 +52,7 @@
                     <div class="row">
                         <!-- Logo-->
                         <div class="col-md-3 logo">
-                            <a href="@Url.Action("Index", "Home")">
+                            <a href="@Url.Action(" index", "Home" )">
                                 <img src="@Url.Content("~/Content/Theme/img/FM_LOGO.png")" />
                             </a>
                         </div>
@@ -67,16 +67,16 @@
                     <!-- Menu-->
                     <ul class="sf-menu" id="menu">
                         <li class="selected">
-                        @Html.ActionLink("Home", "Index", "Home")
+                            @Html.ActionLink("Home", "Index", "Home")
                         </li>
                         <li class="current">
                             <a href="#">Teams</a>
                             <ul class="sub-current">
                                 <li>
-                                   @Html.ActionLink("View Teams", "Index", "Teams")
+                                    @Html.ActionLink("View Teams", "Index", "Teams")
                                 </li>
                                 <li>
-                                   @Html.ActionLink("Create Teams", "Index", "Teams")
+                                    @Html.ActionLink("Create Teams", "Index", "Teams")
                                 </li>
                             </ul>
 
@@ -88,7 +88,7 @@
                                     @Html.ActionLink("View Championships", "Index", "Championships")
                                 </li>
                                 <li>
-                                    @Html.ActionLink("Create Championships", "Create", "Championships")
+                                    @Html.ActionLink("Create Championships", "Index", "Championships")
                                 </li>
                             </ul>
 
@@ -132,84 +132,15 @@
                             </ul>
 
                         </li>
-                       </ul>
+                    </ul>
                     <!-- End Menu-->
                 </div>
             </nav>
             <!-- End mainmenu-->
         </header>
-        <!-- End Header-->
-        @*<div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        @Html.ActionLink("FManager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Championships", "Index", "Championships")</li>
-                            <li>@Html.ActionLink("Seasons", "Index", "Seasons")</li>
-                            <li>@Html.ActionLink("Matches", "Index", "Matches")</li>
-                            <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-                            <li>@Html.ActionLink("Players", "Index", "Players")</li>
-                        </ul>
-                        @Html.Partial("_LoginPartial")
-                    </div>
-                </div>
-            </div>*@
-        <!-- Section Title -->
-        <section class="section-title img-about">
-            <div class="overlay-bg"></div>
-            <div class="container">
-                <h1>@ViewContext.RouteData.Values["controller"] </h1>
-            </div>
-        </section>
-        <!-- End Section Title -->
-        <!-- Section Area - Content Central -->
-        <section class="content-info">
 
-            <div class="crumbs">
-                <div class="container">
-                    <ul>
-                        <li>@Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(),"Index")</li>
-                        <li>/</li>
-                        <li>@ViewContext.RouteData.Values["action"]</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="semiboxshadow text-center">
-                <img src="@Url.Content("~/Content/Theme/img/img-theme/shp.png")" class="img-responsive" alt="">
-            </div>
-
-            <!-- Content Central -->
-            <div class="container padding-top">
-                <div class="row">
-                    <!-- content Column Left -->
-                    <div class="col-md-12">
-
-                        <div class="row">
-                            <!-- blog post-->
                             @RenderBody()
-                        </div>
-
-                        <!-- End Experts -->
-                    </div>
-                    <!-- End content Left -->
-
-
-
-                </div>
-            </div>
-            <!-- End Content Central -->
-
-        </section>
-        <!-- End Section Area - Content Central -->
+        
         <!-- footer-->
         <footer id="footer">
             <div class="container">
@@ -228,12 +159,12 @@
                         <!-- Nav Footer-->
                         <ul class="nav-footer">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Teams", "Index", "Teams")</li> 
+                            <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
                             <li>@Html.ActionLink("Championships", "Index", "Championships")</li>
                             <li>@Html.ActionLink("Journeys", "Index", "Journeys")</li>
                             <li>@Html.ActionLink("Matches", "Index", "Matches")</li>
                             <li>@Html.ActionLink("Match Goals", "Index", "MatchGoals")</li>
-                                         
+
                         </ul>
                         <!-- End Nav Footer-->
                     </div>
@@ -280,7 +211,6 @@
     <!--MAIN FUNCTIONS-->
     @Scripts.Render("~/Content/Theme/js/main.js")
     <!-- ======================= End JQuery libs =========================== -->
-
-        @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>
