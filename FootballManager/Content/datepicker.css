@@ -70,17 +70,18 @@
 .datepicker td.active,
 .datepicker td.active:hover {
   color: #ffffff;
-  background-color: #006dcc;
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+    background: #95c147; /* Old browsers */
+    background: -moz-linear-gradient(top, #95c147 0%, #88c425 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#95c147), color-stop(100%,#88c425)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #95c147 0%,#88c425 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #95c147 0%,#88c425 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #95c147 0%,#88c425 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #95c147 0%,#88c425 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#95c147', endColorstr='#88c425',GradientType=0 ); /* IE6-9 */
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
   border-color: #0044cc #0044cc #002a80;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #0044cc;
+  *background-color: #95c147;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
