@@ -93,6 +93,16 @@
                             </ul>
 
                         </li>
+
+                        <li class="current">
+                            <a href="#">Journeys</a>
+                            <ul class="sub-current">
+                                <li>
+                                    @Html.ActionLink("View Journeys", "Index", "Journeys")
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="current">
                             <a href="#">Matches</a>
                             <ul class="sub-current">
@@ -100,10 +110,17 @@
                                     @Html.ActionLink("View Matches", "Index", "Matches")
                                 </li>
                             </ul>
-
                         </li>
 
-                    </ul>
+                        <li class="current">
+                            <a href="#">Match Goals</a>
+                            <ul class="sub-current">
+                                <li>
+                                    @Html.ActionLink("View Match Goals", "Index", "MatchGoals")
+                                </li>
+                            </ul>
+                        </li>
+                       </ul>
                     <!-- End Menu-->
                 </div>
             </nav>
@@ -155,7 +172,9 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Teams", "Index", "Teams")</li> 
                             <li>@Html.ActionLink("Championships", "Index", "Championships")</li>
+                            <li>@Html.ActionLink("Journeys", "Index", "Journeys")</li>
                             <li>@Html.ActionLink("Matches", "Index", "Matches")</li>
+                            <li>@Html.ActionLink("Match Goals", "Index", "MatchGoals")</li>
                                          
                         </ul>
                         <!-- End Nav Footer-->
