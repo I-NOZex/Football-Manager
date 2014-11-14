@@ -90,7 +90,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td align="right">
-                    @Html.ActionLink("Details", "Players/Details", , new { id = item.ID })
+                    @Html.ActionLink("Details", "Players/Details", new { id = item.ID })
                     @*@Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ID }, null)*@
                 </td>
             </tr>
