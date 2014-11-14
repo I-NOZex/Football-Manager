@@ -77,161 +77,187 @@
 
                     <!-- Tab - Matches -->
                     <div class="tab-pane active" id="club-news">
-                        <h3>Euro 2016</h3>
+                        <h3>@ViewBag.LastChamp.Name</h3>
                         <!-- Clubs Carousel-->
                         <ul id="clubs-carousel" class="clubs-teams">
                             <!-- Item carousel club -->
-                            <li class="row">
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/9.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo B</a></h4>
-                                            <p>Belgica</p>
-                                            <p>Vs.</p>
-                                            <p>Gales</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/10.png")" alt="" class="img-responsive">
-                                        </div>
+<li class="row">
+        <!-- Item clubs -->
+    @foreach (var match in ViewBag.Matches) { 
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content(match.Team.Logo)" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4>
+                        @Html.ActionLink((string)match.Team.City, "Details", "Matches", new { id = match.ID }, null)
+                    </h4>
+                    <p>@match.Team.Name</p>
+                    <p>Vs.</p>
+                    <p>@match.Team1.Name</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content(match.Team1.Logo)" alt="" class="img-responsive">
+                </div>
 
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/11.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo C</a></h4>
-                                            <p>Espanha</p>
-                                            <p>Vs.</p>
-                                            <p>Bielorrússia</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/12.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/13.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo D</a></h4>
-                                            <p>Alemanha</p>
-                                            <p>Vs.</p>
-                                            <p>Gibraltar</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/14.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/3.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo E</a></h4>
-                                            <p>Inglaterra</p>
-                                            <p>Vs.</p>
-                                            <p>Eslovénia</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/8.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                            </li>
-                            <!-- End Item carousel club -->
-                            <!-- Item carousel club -->
-                            <li class="row">
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/15.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo F</a></h4>
-                                            <p>Hungria</p>
-                                            <p>Vs.</p>
-                                            <p>Finlândia</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/16.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/6.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo G</a></h4>
-                                            <p>Áustria</p>
-                                            <p>Vs.</p>
-                                            <p>Rússia</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/5.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/1.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo H</a></h4>
-                                            <p>Itália</p>
-                                            <p>Vs.</p>
-                                            <p>Croácia</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/2.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                                <!-- Item clubs -->
-                                <div class="col-sx-12 col-sm-6 col-md-6">
-                                    <div class="item-clubs">
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/4.png")" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="info-clubs">
-                                            <h4><a href="#">Grupo I</a></h4>
-                                            <p>Portugal</p>
-                                            <p>Vs.</p>
-                                            <p>Arménia</p>
-                                        </div>
-                                        <div class="img-clubs">
-                                            <img src="@Url.Content("~/Content/Theme/img/clubs-team/7.png")" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Item clubs -->
-                            </li>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+    }
+</li>
+    <!-- End Item carousel club -->
+    @*<li class="row">
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/9.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo B</a></h4>
+                    <p>Belgica</p>
+                    <p>Vs.</p>
+                    <p>Gales</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/10.png")" alt="" class="img-responsive">
+                </div>
+
+            </div>
+        </div>
+        <!-- End Item clubs -->
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/11.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo C</a></h4>
+                    <p>Espanha</p>
+                    <p>Vs.</p>
+                    <p>Bielorrússia</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/12.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/13.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo D</a></h4>
+                    <p>Alemanha</p>
+                    <p>Vs.</p>
+                    <p>Gibraltar</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/14.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/3.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo E</a></h4>
+                    <p>Inglaterra</p>
+                    <p>Vs.</p>
+                    <p>Eslovénia</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/8.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+    </li>
+    <!-- End Item carousel club -->
+    <!-- Item carousel club -->
+    <li class="row">
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/15.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo F</a></h4>
+                    <p>Hungria</p>
+                    <p>Vs.</p>
+                    <p>Finlândia</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/16.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/6.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo G</a></h4>
+                    <p>Áustria</p>
+                    <p>Vs.</p>
+                    <p>Rússia</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/5.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/1.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo H</a></h4>
+                    <p>Itália</p>
+                    <p>Vs.</p>
+                    <p>Croácia</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/2.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+        <!-- Item clubs -->
+        <div class="col-sx-12 col-sm-6 col-md-6">
+            <div class="item-clubs">
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/4.png")" alt="" class="img-responsive">
+                </div>
+                <div class="info-clubs">
+                    <h4><a href="#">Grupo I</a></h4>
+                    <p>Portugal</p>
+                    <p>Vs.</p>
+                    <p>Arménia</p>
+                </div>
+                <div class="img-clubs">
+                    <img src="@Url.Content("~/Content/Theme/img/clubs-team/7.png")" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <!-- End Item clubs -->
+    </li>*@
                             <!-- End Item carousel club -->
                         </ul>
                         <!-- End Clubs Carousel-->
@@ -255,10 +281,10 @@
                         </p>
                         <div id="event-one" class="counter"></div>
                         <ul class="post-options">
-                            <li><i class="fa fa-calendar"></i>June 12, 2014</li>
-                            <li><i class="fa fa-clock-o"></i>Kick-of, 12:00 PM</li>
+                            <li><i class="fa fa-calendar"></i>November 14, 2014</li>
+                            <li><i class="fa fa-clock-o"></i>Kick-of, 20:45</li>
                         </ul>
-                        <p>Ei eum affert postulant, ius te mazim zril alterum. Illum dolorem ius ut, eu postulant principes sit.  ert postulant, ius te mazim zril alterum Tibique scriptorem cu pri, te fugit voluptatum mel, nibh exerci denique at qui.</p>
+                        <p>Portugal faces Armenia National Football Team to try to qualify for Euro 2016.</p>
                         <a class="btn btn-primary" href="#">
                         </a>
                     </div>
