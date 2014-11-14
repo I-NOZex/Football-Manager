@@ -446,6 +446,7 @@
     <Content Include="Content\Theme\img\slide\patterns\Descr.WD3" />
     <Content Include="Content\Theme\img\sponsors\Descr.WD3" />
     <Content Include="Content\Theme\img\testimonials\Descr.WD3" />
+    <Content Include="db.rar" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\custom-functions.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
