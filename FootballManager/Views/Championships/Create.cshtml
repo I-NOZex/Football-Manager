@@ -67,10 +67,9 @@
                 @*Html.DropDownList("Teams", null, htmlAttributes: new { @class = "form-control select2" })*@
                 @*Html.HiddenFor(model => model.TeamPoints, new { id = "CUSTOMERID", @class = " input-block-level  bigdrop", placeholder = "Search for customer" })*@
                 @Html.ValidationMessageFor(model => model.TeamPoints, "", new { @class = "text-danger" })
-                @*Html.ListBoxFor(x => x.SelectedTeams, ViewBag.Teams, new {
-                   multiple = "multiple",
-                   id = "CUSTOMERID"
-               });*@
+                @Html.HiddenFor(model => model.SelectedTeams, new { id = "teams", @class = " input-block-level", placeholder = "Search for team" })
+                <input type="hidden" class="select2-offscreen" id="teams-hide" style="width:100%" value="" />
+                @*<input type="text" class="hidden" id="teams" name="teams" value="ViewBag.Teams" />*@
             </div>
         </div>
 
@@ -91,4 +90,57 @@
     @Scripts.Render("~/Scripts/select2.min.js")
     @Scripts.Render("~/Scripts/custom-functions.js")
     @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+    $(document).ready(function () {
+        //select2Dropdown('teams-hide', 'teams', 'Search for make(s)', 'SearchTeams', 'GetTeam', true);
+        $("#teams-hide").select2({
+            /*initSelection: function (element, callback) {
+                var elementText = "ViewBag.currentItemName";
+                callback({ "name": elementText });
+            },*/
+            initSelection: function (element, callback) {
+                // the input tag has a value attribute preloaded that points to a preselected make's id
+                // this function resolves that id attribute to an object that select2 can render
+                // using its formatResult renderer - that way the make text is shown preselected
+                var id = $('#teams').val();
+                if (id !== null && id.length > 0) {
+                    $.ajax("/Championships/SearchTeams/" + id, {
+                        dataType: "json"
+                    }).done(function (data) { callback(data); });
+                }
+            },
+
+            placeholder: "Select an team",
+            allowClear: true,
+            style: "display: inline-block",
+            //minimumInputLength: 2, //you can specify a min. query length to return results
+            multiple: true,
+            ajax:{
+                cache: false,
+                dataType: "json",
+                type: "GET",
+                url: "@Url.Action("SearchTeams", "Championships")",
+            data: function (searchTerm) {
+                return { id: searchTerm };
+            },
+            results: function (data) { 
+                return {results: data}; 
+            }
+        },
+        formatResult: function(contract) {
+            var markup = "<table class='contract-result'><tr>";
+            if (contract.name !== undefined) {
+                markup += "<div class='contract-name'>" + contract.name + "</div>";
+            }
+            markup += "</td></tr></table>"
+            return markup;
+        },
+        formatSelection: function(item){
+            return item.name;
+        },
+        escapeMarkup: function (m) { return m; }
+        });
+    });
+</script>
 }

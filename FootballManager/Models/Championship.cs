@@ -51,8 +51,10 @@ namespace FootballManager.Models
         [Required]
         public int EntityMngID { get; set; }
 
-        public SelectList Teams { get; set; }
-        public string[] SelectedTeams { get; set; } 
+        //public SelectList Teams { get; set; }
+        //public string[] SelectedTeams { get; set; }
+        [NotMapped]
+        public string SelectedTeams { get; set; }
 
         public virtual EntityManager EntityManager { get; set; }
         public virtual Country Country { get; set; }

@@ -49,7 +49,7 @@ namespace FootballManager.Controllers
         {
             ViewBag.EntityMngID = new SelectList(db.EntityManager, "ID", "Name");
             ViewBag.CountryID = new SelectList(db.Country, "ID", "Name");
-            ViewBag.Teams = new SelectList(db.Team, "ID", "Name");
+            ViewBag.Teams = "";
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace FootballManager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "ID,Name,LogoPath,FoudationDate,CountryID,EntityMngID")] Championship championship)
+        public ActionResult Create([Bind(Include = "ID,Name,LogoPath,SelectedTeams,FoudationDate,CountryID,EntityMngID")] Championship championship)
         {           
             if (championship.LogoPath != null && championship.LogoPath.ContentLength > 0) {
                 string filename = DateTime.Now.Ticks + Path.GetExtension(championship.LogoPath.FileName);
@@ -76,6 +76,25 @@ namespace FootballManager.Controllers
                 try { 
                 db.Championship.Add(championship);
                 db.SaveChanges();
+
+                Season season = new Season();
+                season.ChampshipID = championship.ID;
+                season.NumberOfTeams = 0;
+                season.Year = DateTime.Now;
+
+                db.Season.Add(season);
+                db.SaveChanges();
+
+                foreach (var team in championship.SelectedTeams.Split(',')){
+                    TeamPoints teamPts = new TeamPoints();
+                    teamPts.ChampshipID = championship.ID;
+                    teamPts.Points = 0;
+                    teamPts.TeamID = int.Parse(team);
+
+                    db.TeamPoints.Add(teamPts);
+                    db.SaveChanges();        
+                }        
+
                 return RedirectToAction("Create", "Journeys", new { area = "", id = championship.ID });
 
 
@@ -202,5 +221,21 @@ namespace FootballManager.Controllers
             base.Dispose(disposing);
         }
 
+        //[HttpGet]
+        public JsonResult SearchTeams(string id)
+        {
+            //TelemarketingContext teleContext = new TelemarketingContext();
+            var teams = db.Team.ToList().Where(
+                    a => a.Name.ToLower().StartsWith(id.ToLower())
+                ); ;
+            var json = from team in teams
+                       select new {
+                           name = team.Name,
+                           id = team.ID,
+                       };
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
     }
+
 }
