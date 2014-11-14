@@ -18,8 +18,8 @@
     <link href="@Styles.Url("~/Content/Theme/css/green.css")" rel="stylesheet" media="screen" class="skin">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="img/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="img/icons/ball_32x32.png">
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.png")">
+    <link rel="apple-touch-icon" href="@Url.Content("~/favicon.png")">
 
     <!-- Head Libs -->
     @Scripts.Render("~/bundles/modernizr")
@@ -171,11 +171,12 @@
                     <div class="col-md-7">
                         <!-- Nav Footer-->
                         <ul class="nav-footer">
-                            <li><a href="index.html">HOME</a> </li>
-                            <li><a href="teams.html">TEAMS</a></li>
-                            <li><a href="championships.html">CHAMPIONSHIPS</a></li>
-                            <li><a href="matches.html">MATCHES</a></li>
-                            <li><a href="results.html">RESULTS</a></li>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Championships", "Index", "Championships")</li>
+                            <li>@Html.ActionLink("Seasons", "Index", "Seasons")</li>
+                            <li>@Html.ActionLink("Matches", "Index", "Matches")</li>
+                            <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
+                            <li>@Html.ActionLink("Players", "Index", "Players")</li>               
                         </ul>
                         <!-- End Nav Footer-->
                     </div>
