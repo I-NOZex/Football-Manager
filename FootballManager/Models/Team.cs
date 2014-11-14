@@ -11,6 +11,9 @@ namespace FootballManager.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
     
     public partial class Team
     {
@@ -25,7 +28,16 @@ namespace FootballManager.Models
     
         public int ID { get; set; }
         public string Name { get; set; }
+
         public string Logo { get; set; }
+
+        //[Required]
+        [NotMapped]
+        [DataType(DataType.Upload)]
+        //[FileSize(10240)]
+        //[FileTypes("jpg,jpeg,png,gif")]
+        public HttpPostedFileBase LogoPath { get; set; }
+                
         public System.DateTime FundationDate { get; set; }
         public int CountryID { get; set; }
         public string City { get; set; }
