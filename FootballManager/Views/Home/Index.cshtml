@@ -77,35 +77,41 @@
 
                     <!-- Tab - Matches -->
                     <div class="tab-pane active" id="club-news">
-                        <h3>@ViewBag.LastChamp.Name</h3>
+                        <h3>@if(ViewBag.LastChamp != null){@ViewBag.LastChamp.Name}</h3>
                         <!-- Clubs Carousel-->
                         <ul id="clubs-carousel" class="clubs-teams">
                             <!-- Item carousel club -->
-<li class="row">
-        <!-- Item clubs -->
-    @foreach (var match in ViewBag.Matches) { 
-        <div class="col-sx-12 col-sm-6 col-md-6">
-            <div class="item-clubs">
-                <div class="img-clubs">
-                    <img src="@Url.Content(match.Team.Logo)" alt="" class="img-responsive">
-                </div>
-                <div class="info-clubs">
-                    <h4>
-                        @Html.ActionLink((string)match.Team.City, "Details", "Matches", new { id = match.ID }, null)
-                    </h4>
-                    <p>@match.Team.Name</p>
-                    <p>Vs.</p>
-                    <p>@match.Team1.Name</p>
-                </div>
-                <div class="img-clubs">
-                    <img src="@Url.Content(match.Team1.Logo)" alt="" class="img-responsive">
-                </div>
+                            <li class="row col-sm-12">
+                                <!-- Item clubs -->
+                                @{int i = 4;}
+                                @if (ViewBag.Matches != null) {
+                                    foreach (var match in ViewBag.Matches) {
+                                        if (i > 0) {
+                                            <div class="col-sx-12 col-sm-6 col-md-6">
+                                                <div class="item-clubs">
+                                                    <div class="img-clubs">
+                                                        <img src="@Url.Content(match.Team.Logo)" alt="" class="img-responsive">
+                                                    </div>
+                                                    <div class="info-clubs">
+                                                        <h4>
+                                                            @Html.ActionLink((string)match.Team.City, "Details", "Matches", new { id = match.ID }, null)
+                                                        </h4>
+                                                        <p>@match.Team.Name</p>
+                                                        <p>Vs.</p>
+                                                        <p>@match.Team1.Name</p>
+                                                    </div>
+                                                    <div class="img-clubs">
+                                                        <img src="@Url.Content(match.Team1.Logo)" alt="" class="img-responsive">
+                                                    </div>
 
-            </div>
-        </div>
+                                                </div>
+                                            </div>
+                                            i--;
+                                        }
+                                    }
         <!-- End Item clubs -->
-    }
-</li>
+                                }
+                            </li>
     <!-- End Item carousel club -->
     @*<li class="row">
         <!-- Item clubs -->

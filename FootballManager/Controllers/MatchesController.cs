@@ -42,8 +42,8 @@ namespace FootballManager.Controllers
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Championship champ = db.Championship.Find(id);
-            if (champ == null) {
+            Journey jorn = db.Journey.Find(id);
+            if (jorn == null) {
                 return HttpNotFound();
             }
             ViewBag.journeyID = id;
