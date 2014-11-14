@@ -76,7 +76,7 @@
 	});
 
 	//=================================== Skins Changer ====================================//
-
+/*
 	google.setOnLoadCallback(function(){
 
 	'use strict';
@@ -115,7 +115,7 @@
         return false;
    	});
  });
-
+*/
 	//=================================== Background Options ====================================//
 	
 	$('#theme-options ul.backgrounds li').click(function(){
